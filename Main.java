@@ -10,7 +10,7 @@ public class Main {
     public static void addLoginField(JFrame f){
         //Add Login Fields
         JTextField login = new JTextField(40);
-        JTextField password = new JTextField(40);
+        JTextField password = new JPasswordField(40);
         login.addActionListener(new TextListener());
         password.addActionListener(new TextListener());
         addLabel(f, "Username:");
