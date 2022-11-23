@@ -1,6 +1,7 @@
 package src;
 
 import javax.swing.*;
+import java.util.Scanner;
 
 public class Main {
     public static void addLoginButton(String text, JFrame f, JTextField log, JTextField pass) {
@@ -29,20 +30,37 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // create the login Window
-        JFrame frame = new JFrame("Login Page");
+        System.out.println("Welcome to your mobile bank account!");
+        int choice = 0;
+        while (choice!=3) {
+            System.out.println("1. Login to existing account");
+            System.out.println("2. Create an account");
+            System.out.println("3. Exit");
+            System.out.print(": ");
+            Scanner in = new Scanner(System.in);
+            choice = in.nextInt();
+            if (choice == 1) {
 
-        // Exits program upon closing window
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            } else if (choice == 2) {
 
-        // Make Box layout
-        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-
-        //Adds login and password textboxes, as well as the labels and login button
-        addLoginField(frame);
-
-        // display the window
-        frame.pack();
-        frame.setVisible(true);
+            } else if (choice == 3) {
+                System.exit(0);
+            }
+        }
+//        // create the login Window
+//        JFrame frame = new JFrame("Login Page");
+//
+//        // Exits program upon closing window
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        // Make Box layout
+//        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+//
+//        //Adds login and password textboxes, as well as the labels and login button
+//        addLoginField(frame);
+//
+//        // display the window
+//        frame.pack();
+//        frame.setVisible(true);
     }
 }
