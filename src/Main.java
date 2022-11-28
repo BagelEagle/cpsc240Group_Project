@@ -1,9 +1,13 @@
 package src;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
+    private static HashMap<String, User> users = new HashMap<>();
     public static void addLoginButton(String text, JFrame f, JTextField log, JTextField pass) {
         // add a login button object
         JButton button = new JButton(text);
@@ -29,6 +33,32 @@ public class Main {
         f.getContentPane().add(label);
     }
 
+    public static void createNewUser () {
+        String newUsername = null;
+        System.out.println("Create a new account");
+        System.out.println("Please enter a username");
+        System.out.print(": ");
+        for (String id: users.keySet()) {
+            Scanner in = new Scanner(System.in);
+            newUsername = in.nextLine();
+            while (id.equals(newUsername)) {
+                System.out.println("This username is taken. Please enter a different username");
+                System.out.print(": ");
+                newUsername = in.nextLine();
+            }
+        }
+        System.out.print("Please enter a password:");
+        Scanner in2 = new Scanner(System.in);
+        String password = in2.nextLine();
+        System.out.println("First name:");
+        Scanner in3 = new Scanner(System.in);
+        String fname = in3.nextLine();
+        System.out.println("Last name:");
+        Scanner in4 = new Scanner(System.in);
+        String lname = in4.nextLine();
+        users.put(newUsername,new User(newUsername,password,fname,lname,0.0,0.0));
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to your mobile bank account!");
         int choice = 0;
@@ -42,7 +72,7 @@ public class Main {
             if (choice == 1) {
 
             } else if (choice == 2) {
-
+                createNewUser();
             } else if (choice == 3) {
                 System.exit(0);
             }

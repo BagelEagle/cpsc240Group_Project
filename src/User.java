@@ -1,3 +1,8 @@
+package src;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.io.PrintWriter;
@@ -6,7 +11,7 @@ import java.util.InputMismatchException;
 /**
  * @author James Amador, Kaylie Curran, April Groce
  */
-public class AccountUser {
+public class User {
     private String username;
     private String password;
     private String fname;
@@ -27,7 +32,7 @@ public class AccountUser {
      * @param checkAct Stores the amount of money in the user's checking account
      * @param saveAct Stores the amount of money in the user's savings account
      */
-    public AccountUser(String uname, String pass, String fname, String lname, double checkAct, double saveAct){
+    public User(String uname, String pass, String fname, String lname, double checkAct, double saveAct){
         this.username = uname;
         this.password = pass;
         this.fname = fname;
@@ -45,7 +50,7 @@ public class AccountUser {
      * This is based off of the Card constructor found in the SRS, with some heavy modifications.
      * @param read Scanner reads a file and parses each line for user information.
      */
-    public AccountUser(Scanner read){
+    public User(Scanner read){
         this.username = read.nextLine();
         this.password = read.nextLine();
         this.fname = read.nextLine();
@@ -54,6 +59,11 @@ public class AccountUser {
         this.savings = read.nextDouble();
         this.moneyMarket = read.nextDouble();
         this.certificateDeposit = read.nextDouble();
+    }
+
+    public void saveUserLogin (PrintWriter out) {
+        out.println(username);
+        out.println(password);
     }
 
     /**
