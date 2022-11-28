@@ -16,6 +16,7 @@ public class User {
     private String password;
     private String fname;
     private String lname;
+    private String salt;
     private double checking;
     private double savings;
     private double moneyMarket;
@@ -32,9 +33,10 @@ public class User {
      * @param checkAct Stores the amount of money in the user's checking account
      * @param saveAct Stores the amount of money in the user's savings account
      */
-    public User(String uname, String pass, String fname, String lname, double checkAct, double saveAct){
+    public User(String uname, String pass, String salt, String fname, String lname, double checkAct, double saveAct){
         this.username = uname;
         this.password = pass;
+        this.salt = salt;
         this.fname = fname;
         this.lname = lname;
         this.checking = checkAct;
@@ -53,17 +55,13 @@ public class User {
     public User(Scanner read){
         this.username = read.nextLine();
         this.password = read.nextLine();
+        this.salt = read.nextLine();
         this.fname = read.nextLine();
         this.lname = read.nextLine();
         this.checking = read.nextDouble();
         this.savings = read.nextDouble();
         this.moneyMarket = read.nextDouble();
         this.certificateDeposit = read.nextDouble();
-    }
-
-    public void saveUserLogin (PrintWriter out) {
-        out.println(username);
-        out.println(password);
     }
 
     /**
@@ -111,7 +109,7 @@ public class User {
     }
 
     /**
-     * Retrieve's the amunt of money that is in the user's Certificate Deposit
+     * Retrieve's the amount of money that is in the user's Certificate Deposit
      * @return the amount of money in the user's Certificate Deposit
      */
     public double getCD(){
