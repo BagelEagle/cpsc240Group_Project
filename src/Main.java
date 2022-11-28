@@ -13,7 +13,7 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.random.RandomGenerator;
+import java.util.Random.*;
 
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
@@ -83,6 +83,31 @@ public class Main {
 
     }
 
+    public static void balance() {
+
+    }
+
+    public static void deposit() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("How much would you like to deposit?");
+        double depositAmount = in.nextInt();
+        User user = new User();
+        user.deposit(depositAmount);
+
+    }
+
+    public static void withdraw() {
+
+    }
+
+    public static void transfer() {
+
+    }
+
+    public static void loan() {
+
+    }
+
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
         System.out.println("Welcome to your mobile bank account!");
         int choice = 0;
@@ -111,21 +136,23 @@ public class Main {
                     Scanner in2 = new Scanner(System.in);
                     choice2 = in.nextInt();
                     if (choice2==1) {
-
+                        balance();
                     } else if (choice2==2) {
-
+                        deposit();
                     } else if (choice2==3) {
-
+                        withdraw();
                     } else if (choice2==4) {
-
+                        transfer();
                     } else if (choice2==5) {
-
+                        loan();
                     } else if (choice2==6) {
                         continue;
                     }
                 }
             } else if (choice == 3) {
                 System.exit(0);
+            } else {
+                System.out.println("You did not select a valid option, please try again.");
             }
         }
         //GUI section - commented out to start by doing it all without GUI first
