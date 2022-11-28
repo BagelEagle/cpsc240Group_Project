@@ -128,6 +128,7 @@ public class Main {
                 System.exit(0);
             }
         }
+        //GUI section - commented out to start by doing it all without GUI first
 //        // create the login Window
 //        JFrame frame = new JFrame("Login Page");
 //
