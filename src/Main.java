@@ -16,30 +16,6 @@ import java.util.Scanner;
 
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
-    public static void addLoginButton(String text, JFrame f, JTextField log, JTextField pass) {
-        // add a login button object
-        JButton button = new JButton(text);
-        button.addActionListener(new LoginButtonListener(log, pass));
-        f.getContentPane().add(button);
-    }
-    public static void addLoginField(JFrame f){
-        //Add Login Fields
-        JTextField login = new JTextField(40);
-        JTextField password = new JPasswordField(40);
-        login.addActionListener(new TextListener());
-        password.addActionListener(new TextListener());
-        addLabel(f, "Username:");
-        f.getContentPane().add(login);
-        addLabel(f, "Password:");
-        f.getContentPane().add(password);
-
-        addLoginButton("Some text", f, login, password);
-    }
-    public static void addLabel(JFrame f, String text){
-        //add a label object
-        JLabel label = new JLabel(text);
-        f.getContentPane().add(label);
-    }
 
     public static void createNewUser () throws InvalidKeySpecException, NoSuchAlgorithmException {
         String newUsername = null;
