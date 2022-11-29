@@ -13,6 +13,11 @@ public class Window {
     private JFrame checkBalance;
     public Window(){
         initializeLoginWindow();
+        //initialize each window here as a method.
+        //Display login will always be last, since it
+        //is the first window that is displayed upon creation of
+        // "Window" class.
+        displayLogin();
     }
     /**
      * Creates a text label. This can be put anywhere on the screen, such as

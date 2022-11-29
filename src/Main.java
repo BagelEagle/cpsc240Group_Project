@@ -59,6 +59,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        //Line below initializes all the windows and displays the login window.
+        //Window win = new Window();
         System.out.println("Welcome to your mobile bank account!");
         int choice = 0;
         while (choice!=3) {
@@ -103,21 +105,5 @@ public class Main {
                 System.exit(0);
             }
         }
-        //GUI section - commented out to start by doing it all without GUI first
-//        // create the login Window
-//        JFrame frame = new JFrame("Login Page");
-//
-//        // Exits program upon closing window
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        // Make Box layout
-//        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-//
-//        //Adds login and password textboxes, as well as the labels and login button
-//        addLoginField(frame);
-//
-//        // display the window
-//        frame.pack();
-//        frame.setVisible(true);
     }
 }
