@@ -9,7 +9,9 @@ import java.awt.event.*;
  * Has one attribute: the name of the button
  */
 public class NewUserButtonListener implements ActionListener{
-    public NewUserButtonListener(){
+    Window window;
+    public NewUserButtonListener(Window jframeWindow){
+        window = jframeWindow;
     }
 
     /**
@@ -19,7 +21,9 @@ public class NewUserButtonListener implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        //Placeholder action. What should happen here is hide the login window and display a new user window.
-        JOptionPane.showMessageDialog(null, "Button pushed!");
+        JOptionPane.showMessageDialog(null, "Placeholder message. This message is located in the method where login window is hidden and the new user window is displayed");
+        //Code below commented out because the new user window has not yet been initialized in Window.java
+        //this.window.hideLogin();
+        //this.window.displayNewUser();
     }
 }

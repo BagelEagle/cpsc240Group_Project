@@ -61,9 +61,12 @@ public class Window {
         this.login.getContentPane().add(button);
     }
 
+    /**
+     * Creates a button for new users to register an account
+     */
     public void addNewUserButton(){
         JButton button = new JButton("Register");
-        button.addActionListener(new NewUserButtonListener());
+        button.addActionListener(new NewUserButtonListener(this));
         //button.setPreferredSize(new Dimension(120,40));
         this.login.getContentPane().add(button);
 
@@ -110,8 +113,22 @@ public class Window {
      * Getter method that returns the registration JFrame window for new users
      * @return new user window
      */
-    public JFrame getNewUser(){ return newUser; }
+    public JFrame getNewUser(){
+        return newUser; }
 
+    /**
+     * Displays the new user window
+     */
+    public void displayNewUser(){
+        newUser.setVisible(true);
+    }
+
+    /**
+     * Hides the new user window
+     */
+    public void hideNewUser(){
+        newUser.setVisible(false);
+    }
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
      * @return main menu window
