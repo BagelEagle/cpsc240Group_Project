@@ -80,6 +80,11 @@ public class Window {
     }
 
     /**
+     * Getter method that returns the login JFrame window
+     * @return login window
+     */
+    public JFrame getLogin(){ return login; }
+    /**
      * Displays the login window
      */
     public void displayLogin() {
@@ -93,28 +98,56 @@ public class Window {
         login.setVisible(false);
     }
 
+    /**
+     * Getter method that returns the registration JFrame window for new users
+     * @return new user window
+     */
     public JFrame getNewUser(){ return newUser; }
 
+    /**
+     * Getter method that returns the main menu JFrame for the user that logged in
+     * @return main menu window
+     */
     public JFrame getMenu () {
         return menu;
     }
 
+    /**
+     * Getter method that returns the JFrame of the deposit window
+     * @return make a deposit window
+     */
     public JFrame getDeposit () {
         return deposit;
     }
 
+    /**
+     * Getter method that returns the JFrame of the withdrawal window
+     * @return make a withdrawal window
+     */
     public JFrame getWithdraw () {
         return withdraw;
     }
 
+    /**
+     * Getter method that returns the JFrame of the transfer funds window
+     * @return make funds transfer window
+     */
     public JFrame getTransfer () {
         return transfer;
     }
 
+    /**
+     * Getter method that returns the JFrame of the request a loan window
+     * @return request a loan window
+     */
     public JFrame getRequestLoan () {
         return requestLoan;
     }
 
+    /**
+     * Getter method that returns the JFrame of the check balance window
+     * @return check balance window
+     */
     public JFrame getCheckBalance () {
         return checkBalance;
     }
