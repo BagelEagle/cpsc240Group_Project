@@ -13,7 +13,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.random.RandomGenerator;
 
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
@@ -55,7 +54,7 @@ public class Main {
                 newUsername = newIn.nextLine();
             }
         }
-        System.out.print("Please create a password:");
+        System.out.print("Please create a password: ");
         Scanner in2 = new Scanner(System.in);
         String password = in2.nextLine();
 
