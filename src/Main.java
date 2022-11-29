@@ -58,6 +58,32 @@ public class Main {
 
     }
 
+
+    public static void balance() {
+
+    }
+
+    public static void deposit() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("How much would you like to deposit?");
+        double depositAmount = in.nextInt();
+        User user = new User();
+        user.deposit(depositAmount);
+
+    }
+
+    public static void withdraw() {
+
+    }
+
+    public static void transfer() {
+
+    }
+
+    public static void loan() {
+
+    }
+
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
         //Line below initializes all the windows and displays the login window.
         //Window win = new Window();
@@ -88,15 +114,15 @@ public class Main {
                     Scanner in2 = new Scanner(System.in);
                     choice2 = in.nextInt();
                     if (choice2==1) {
-
+                        balance();
                     } else if (choice2==2) {
-
+                        deposit();
                     } else if (choice2==3) {
-
+                        withdraw();
                     } else if (choice2==4) {
-
+                        transfer();
                     } else if (choice2==5) {
-
+                        loan();
                     } else if (choice2==6) {
                         continue;
                     }
