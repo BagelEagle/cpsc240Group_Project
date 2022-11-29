@@ -27,12 +27,21 @@ public class Window {
         login.getContentPane().setLayout(new BoxLayout(login.getContentPane(), BoxLayout.Y_AXIS));
         //function that adds login field.
         //NOTE: I'm going to move the function from main into this class
+        //login.pack();
     }
 
+    /**
+     * @author James Amador
+     * Displays the login window
+     */
     public void displayLogin() {
-        login.pack();
         login.setVisible(true);
     }
+
+    /**
+     * @author James Amador
+     * Hides the login window
+     */
     public void hideLogin(){
         login.setVisible(false);
     }
