@@ -1,0 +1,22 @@
+Project Checklist:
++ Functional GUI-less program to serve as a base prototype
+    -Read user information in from a file
+    -Create a new file for new users
+    -Functional "while loop" for the main menu
+    -Logout Option
+    -Saves changes for
+        -Withdrawals
+        -Deposits
+        -Funds Transfers
+        -(History?)
+    -Securely dispose of sensitive information when user logs out.
+
++ Create a class that handles all the screens of the GUI.
+    -Each window would be its own JFrame, where each would
+     be considered an attribute of this class.
+        -"Main Menu" window
+        -"Funds Transfer" window
+        -"Withdrawal" window
+        -"Deposit" window
+        -"Check Balance" window (History?)
+        -(Other windows?)

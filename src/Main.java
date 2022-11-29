@@ -13,6 +13,8 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
+
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
     public static void addLoginButton(String text, JFrame f, JTextField log, JTextField pass) {
@@ -53,13 +55,13 @@ public class Main {
                 newUsername = newIn.nextLine();
             }
         }
-        System.out.print("Please create a password: ");
+        System.out.print("Please create a password:");
         Scanner in2 = new Scanner(System.in);
         String password = in2.nextLine();
 
         //password hashing - "the salt" is what is used to transform the password so each salt would need to be stored with password, so added a new variable to the user object to include this
-        SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
+        SecureRandom random = null;
         random.nextBytes(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
         SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
