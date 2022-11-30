@@ -200,6 +200,8 @@ public class Window {
         //add buttons here
         addCheckBalanceMenuButton();
         addDepositMenuButton();
+        addWithdrawalMenuButton();
+        addTransferMenuButton();
         //pack
         //this.menu.pack();
     }
@@ -222,9 +224,21 @@ public class Window {
         this.menu.getContentPane().add(button);
     }
 
+    /**
+     * Adds a 'make a withdrawal' menu button.
+     */
     public void addWithdrawalMenuButton(){
         JButton button = new JButton("Make a Withdrawal");
-        button.addActionListener(new insertListener(this));
+        button.addActionListener(new WithdrawButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    /**
+     * Adds a 'make a Funds Transfer' menu button.
+     */
+    public void addTransferMenuButton(){
+        JButton button = new JButton("Make a Funds Transfer");
+        button.addActionListener(new TransferButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
