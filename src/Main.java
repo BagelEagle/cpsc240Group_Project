@@ -4,6 +4,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -44,6 +45,7 @@ public class Main {
         byte[] salt = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(salt);
+        System.out.println(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
         SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] hash = f.generateSecret(spec).getEncoded();
@@ -52,7 +54,6 @@ public class Main {
         password = enc.encodeToString(hash);
         output.println(password);
         output.println(theSalt);
-
 
         System.out.println("First name:");
         Scanner in3 = new Scanner(System.in);
@@ -92,9 +93,14 @@ public class Main {
         }
     }
 
-    public static void login () {
+    public static User loggedIn (User user) {
+        return user;
+    }
+
+    public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, FileNotFoundException {
+        User mainUser = null;
         String filename;
-        String fileUsername;
+        String fileUsername = null;
         String matchFile = null;
         System.out.println("Username: ");
         Scanner in = new Scanner(System.in);
@@ -109,10 +115,36 @@ public class Main {
             }
         }
         if (matchFile==null) {
-            System.out.println("This username does not exist.");
+            System.out.println("Invalid Username.");
+            return false;
+        } else {
+            System.out.println("Password: ");
+            Scanner in2 = new Scanner (System.in);
+            String pass = in.nextLine();
+            for (String userName: users.keySet()) {
+                if (userName.equals(fileUsername)) {
+                    mainUser = users.get(userName);
+                    loggedIn(mainUser);
+                }
+            }
+            String salt = mainUser.getSalt();
+            byte[] theSalt = salt.getBytes(StandardCharsets.UTF_8);
+            System.out.println(theSalt);
+            KeySpec spec = new PBEKeySpec(pass.toCharArray(), theSalt, 65536, 128);
+            SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            byte[] hash = f.generateSecret(spec).getEncoded();
+            Base64.Encoder enc = Base64.getEncoder();
+            String newPass = enc.encodeToString(hash);
+            System.out.println(newPass);
+            String userPass = mainUser.getPassword();
+            System.out.println(userPass);
+            if (newPass.equals(userPass)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
-
 
     public static void balance(User user) {
         System.out.println("Which account balance would you like to see?");
@@ -270,33 +302,36 @@ public class Main {
             Scanner in = new Scanner(System.in);
             choice = in.nextInt();
             if (choice == 1) {
-                login();
-                int choice1 = 0;
-                while (choice1!=6) {
-                    System.out.println("Main Menu");
-                    System.out.println("Manage your bank accounts");
-                    System.out.println("1. See account balance");
-                    System.out.println("2. Make a deposit");
-                    System.out.println("3. Withdraw money");
-                    System.out.println("4. Transfer money");
-                    System.out.println("5. Request a loan");
-                    System.out.println("6. Log out");
-                    System.out.print(": ");
-                    Scanner in2 = new Scanner(System.in);
-                    choice1 = in.nextInt();
-                    if (choice1==1) {
-                        //balance();
-                    } else if (choice1==2) {
+                if (login()==true) {
+                    int choice1 = 0;
+                    while (choice1!=6) {
+                        System.out.println("Main Menu");
+                        System.out.println("Manage your bank accounts");
+                        System.out.println("1. See account balance");
+                        System.out.println("2. Make a deposit");
+                        System.out.println("3. Withdraw money");
+                        System.out.println("4. Transfer money");
+                        System.out.println("5. Request a loan");
+                        System.out.println("6. Log out");
+                        System.out.print(": ");
+                        Scanner in2 = new Scanner(System.in);
+                        choice1 = in.nextInt();
+                        if (choice1==1) {
+                            //balance();
+                        } else if (choice1==2) {
 //                        deposit();
-                    } else if (choice1==3) {
-                        //withdraw();
-                    } else if (choice1==4) {
-                        //transfer();
-                    } else if (choice1==5) {
-                        loan();
-                    } else if (choice1==6) {
-                        continue;
+                        } else if (choice1==3) {
+                            //withdraw();
+                        } else if (choice1==4) {
+                            //transfer();
+                        } else if (choice1==5) {
+                            loan();
+                        } else if (choice1==6) {
+                            continue;
+                        }
                     }
+                } else {
+                    continue;
                 }
             } else if (choice == 2) {
                 createNewUser();
