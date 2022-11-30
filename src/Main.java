@@ -93,13 +93,23 @@ public class Main {
     }
 
     public static void login () {
+        String filename;
+        String fileUsername;
+        String matchFile = null;
         System.out.println("Username: ");
         Scanner in = new Scanner(System.in);
         String loginUsername = in.nextLine();
         File dir = new File("./users");
         File[] directoryListing = dir.listFiles();
         for (File aFile: directoryListing) {
-
+            filename = aFile.getName();
+            fileUsername = filename.substring(0, filename.length() - 4);
+            if (fileUsername.equals(loginUsername)) {
+                matchFile = aFile.getName();
+            }
+        }
+        if (matchFile==null) {
+            System.out.println("This username does not exist.");
         }
     }
 

@@ -186,15 +186,12 @@ public class Window {
 
     }
     /**
-     * Adds a menu button, with the corresponding action listener for each button.
-     * Currently commented out until issues are fleshed out with getting the action listner
-     * to work as a parameter.
+     * Adds a check balance menu button. Currently, it is set up to display the balance in a pop up window.
      */
-    public void addMenuButton(String buttonName){
-    //    JButton button = new JButton("Register");
-    //    button.addActionListener(new listener(this));
-    //    button.setPreferredSize(new Dimension(120,40));
-    //    this.menu.getContentPane().add(button);
+    public void addCheckBalanceMenuButton(){
+        JButton button = new JButton("Check Account Balance");
+        button.addActionListener(new CheckBalanceButtonListener(this));
+        this.menu.getContentPane().add(button);
     }
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
