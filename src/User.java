@@ -1,12 +1,6 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.io.PrintWriter;
-import java.util.InputMismatchException;
 
 /**
  * @author James Amador, Kaylie Curran, April Groce
@@ -27,11 +21,11 @@ public class User {
      * in their money market and CDs, but the amount in their checking
      * and savings account is subject to whatever the user says they start
      * with on account creation.
-     * @param uname Stores the username of the user
-     * @param fname Stores the user's first name
-     * @param lname Stores the user's last name
+     *
+     * @param uname    Stores the username of the user
+     * @param fname    Stores the user's first name
      * @param checkAct Stores the amount of money in the user's checking account
-     * @param saveAct Stores the amount of money in the user's savings account
+     * @param saveAct  Stores the amount of money in the user's savings account
      */
     public User(String uname, String pass, String salt, String fname, String lname, double checkAct, double saveAct){
         this.username = uname;
@@ -41,8 +35,8 @@ public class User {
         this.lname = lname;
         this.checking = checkAct;
         this.savings = saveAct;
-        this.moneyMarket = 0.0;
-        this.certificateDeposit = 0.0;
+        this.moneyMarket = 0.00;
+        this.certificateDeposit = 0.00;
     }
 
     /**
@@ -64,6 +58,9 @@ public class User {
         this.certificateDeposit = read.nextDouble();
     }
 
+    public String getUsername() {
+        return username;
+    }
     public String getPassword () {
         return password;
     }
@@ -129,26 +126,31 @@ public class User {
     }
 
     public void balanceChecking() {
-        System.out.println(this.checking);
+        System.out.println("Checking Account: $" + this.checking);
+        System.out.println("");
     }
 
     public void balanceSavings() {
-        System.out.println(this.savings);
+        System.out.println("Savings Account: $" + this.savings);
+        System.out.println("");
     }
 
     public void balanceMoneyMarket() {
-        System.out.println(this.moneyMarket);
+        System.out.println("Money Market Account: $" + this.moneyMarket);
+        System.out.println("");
     }
 
     public void balanceCertificateDeposit() {
-        System.out.println(this.certificateDeposit);
+        System.out.println("Certificate of Deposit Account: $" + this.certificateDeposit);
+        System.out.println("");
     }
 
     public void balance() {
-        System.out.println(this.checking);
-        System.out.println(this.savings);
-        System.out.println(this.moneyMarket);
-        System.out.println(this.certificateDeposit);
+        System.out.println("Checking Account: $" + this.checking);
+        System.out.println("Savings Account: $" + this.savings);
+        System.out.println("Money Market Account: $" + this.moneyMarket);
+        System.out.println("Certificate of Deposit Account: $" + this.certificateDeposit);
+        System.out.println("");
     }
 
     public void transferCheckingSaving(double balance) {

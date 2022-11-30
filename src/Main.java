@@ -55,7 +55,7 @@ public class Main {
         String theSalt = enc.encodeToString(salt);
         password = enc.encodeToString(hash);
         output.println(password);
-        output.println(theSalt);
+        output.println(salt);
 
         System.out.println("First name:");
         Scanner in3 = new Scanner(System.in);
@@ -65,13 +65,14 @@ public class Main {
         Scanner in4 = new Scanner(System.in);
         String lname = in4.nextLine();
         output.println(lname);
-        users.put(newUsername,new User(newUsername,password,theSalt,fname,lname,0.0,0.0));
+        mainUser = new User(newUsername, password, theSalt, fname, lname, 0.0, 0.0);
+        users.put(newUsername,/*new User(newUsername,password,theSalt,fname,lname,0.0,0.0)*/mainUser);
         System.out.println("Your account has been successfully created.");
         System.out.println("");
-        output.println(0);
-        output.println(0);
-        output.println(0);
-        output.print(0);
+        output.println(0.00);
+        output.println(0.00);
+        output.println(0.00);
+        output.print(0.00);
         output.close();
     }
 
@@ -117,7 +118,7 @@ public class Main {
         } else {
             System.out.println("Password: ");
             Scanner in2 = new Scanner (System.in);
-            String pass = in.nextLine();
+            String pass = in2.nextLine();
             for (String userName: users.keySet()) {
                 if (userName.equals(fileUsername)) {
                     mainUser = users.get(userName);
@@ -134,7 +135,7 @@ public class Main {
             System.out.println(newPass);
             String userPass = mainUser.getPassword();
             System.out.println(userPass);
-            if (newPass.equals(userPass)) {
+            if (pass.equals(userPass)) {
                 return true;
             } else {
                 return false;
@@ -152,7 +153,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         if (choice == 1) {
-            mainUser.balanceSavings();
+            mainUser.balanceChecking();
         } else if (choice == 2) {
             mainUser.balanceSavings();
         } else if (choice == 3) {
