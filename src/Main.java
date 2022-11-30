@@ -96,6 +96,10 @@ public class Main {
 
     }
 
+//    public User getUser() {
+//        return user;
+//    }
+
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
         //Line below initializes all the windows and displays the login window.
         //Window win = new Window();
@@ -128,7 +132,7 @@ public class Main {
                     if (choice2==1) {
                         balance();
                     } else if (choice2==2) {
-                        deposit();
+//                        deposit();
                     } else if (choice2==3) {
                         withdraw();
                     } else if (choice2==4) {
