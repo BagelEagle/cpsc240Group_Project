@@ -3,7 +3,7 @@ package src;
 import javax.swing.*;
 import java.awt.event.*;
 
-class LoginTextListener implements ActionListener {
+public class LoginTextListener implements ActionListener {
     public LoginTextListener(){
     }
 

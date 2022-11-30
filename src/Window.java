@@ -13,6 +13,7 @@ public class Window {
     private JFrame checkBalance;
     public Window(){
         initializeLoginWindow();
+        initializeNewUserWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -108,7 +109,10 @@ public class Window {
     public void hideLogin(){
         login.setVisible(false);
     }
-    //Template for initializing the registration window.
+
+    /**
+     * Initializes the registration window for new users, but does not display the window.
+     */
     public void initializeNewUserWindow(){
         //Creates the window with the name "Register New User"
         this.newUser = new JFrame("Register New User");
@@ -116,34 +120,40 @@ public class Window {
         this.newUser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Make a box layout
         this.login.getContentPane().setLayout(new BoxLayout(this.newUser.getContentPane(), BoxLayout.Y_AXIS));
-        //Adds the login fields and button
-        //addLoginField();
-        //addNewUserButton();
+        //Adds the registration fields and button
+        addRegistrationFields();
         //pack
         this.newUser.pack();
     }
 
-    //Template for registration button
-    public void addRegisterButton(JTextField log, JTextField pass) {
+    /**
+     * Creates a button that registers the user if no other users share the user-specified username.
+     * Only creates an account if the password typed in confPass matches what is in pass.
+     * @param log The user's selected login name. Button will listen for this text box.
+     * @param pass The user's selected password. Button will listen for this text box.
+     * @param confPass The user's password retyped. Button will listen for this text box.
+     */
+    public void addRegisterButton(JTextField log, JTextField pass, JTextField confPass) {
         JButton button = new JButton("Register");
-        button.addActionListener(new LoginButtonListener(log, pass));
-        this.login.getContentPane().add(button);
+        button.addActionListener(new RegistrationButtonListener(this, log, pass, confPass));
+        this.newUser.getContentPane().add(button);
     }
-    //Template for registration text fields
+
+    /**
+     * Adds in Textfields to collect information from the user.
+     */
+    //NOTE: More fields should be added to reflect the user class
     public void addRegistrationFields(){
         JTextField loginField = new JTextField(40);
         JTextField passwordField = new JPasswordField(40);
         JTextField confirmPasswordField = new JPasswordField(40);
-        //Create a unique listener
-        loginField.addActionListener(new LoginTextListener());
-        passwordField.addActionListener(new LoginTextListener());
-        addLabel(this.login, "Username:");
-        this.login.getContentPane().add(loginField);
-        addLabel(this.login, "Password:");
-        this.login.getContentPane().add(passwordField);
-        //nonfunctional button. LoginButtonListener should be edited to compare
-        //what the user typed vs. the password stored in the corresponding username field's file.
-        addLoginButton(loginField, passwordField);
+        addLabel(this.newUser, "Username:");
+        this.newUser.getContentPane().add(loginField);
+        addLabel(this.newUser, "Password:");
+        this.newUser.getContentPane().add(passwordField);
+        addLabel(this.newUser, "Confirm password:");
+        this.newUser.getContentPane().add(confirmPasswordField);
+        addRegisterButton(loginField, passwordField, confirmPasswordField);
     }
 
     /**

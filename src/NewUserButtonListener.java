@@ -9,7 +9,7 @@ import java.awt.event.*;
  * Has one attribute: the name of the button
  */
 public class NewUserButtonListener implements ActionListener{
-    Window window;
+    private Window window;
     public NewUserButtonListener(Window jframeWindow){
         window = jframeWindow;
     }
@@ -22,8 +22,7 @@ public class NewUserButtonListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent mouseClick){
         JOptionPane.showMessageDialog(null, "Placeholder message. This message is located in the method where login window is hidden and the new user window is displayed");
-        //Code below commented out because the new user window has not yet been initialized in Window.java
-        //this.window.hideLogin();
-        //this.window.displayNewUser();
+        this.window.hideLogin();
+        this.window.displayNewUser();
     }
 }
