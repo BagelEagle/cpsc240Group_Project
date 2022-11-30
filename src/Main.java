@@ -69,7 +69,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("How much would you like to deposit?");
         double depositAmount = in.nextDouble();
-        user.deposit(depositAmount);
+        //user.deposit(depositAmount);
 
     }
 
@@ -93,7 +93,20 @@ public class Main {
     }
 
     public static void loan() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("How much would you like to request a loan for?");
+        double loanAmount = in.nextDouble();
 
+        Scanner in2 = new Scanner(System.in);
+        System.out.println("What is the reason you are requesting a loan?");
+        String loanReason = in2.nextLine();
+
+        Scanner in3 = new Scanner(System.in);
+        System.out.println("What is your current salary?");
+        double salary = in3.nextDouble();
+
+        System.out.println("Thank you for your request. It will be reviewed and you will be notified when it has been approved");
+        System.out.println("");
     }
 
 //    public User getUser() {

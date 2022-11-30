@@ -68,17 +68,53 @@ public class User {
      * Deposits a user specified amount into the user's checking account
      * @param balance the amount to be deposited into the checking account
      */
-    public void deposit(double balance){
+    public void depositChecking(double balance){
         this.checking += balance;
+    }
+
+    public void depositSavings(double balance){
+        this.savings += balance;
+    }
+
+    public void depositMoneyMarket(double balance){
+        this.moneyMarket += balance;
+    }
+
+    public void depositCertificateDeposit(double balance){
+        this.certificateDeposit += balance;
     }
 
     /**
      * Withdraws a user specified amount from the user's checking account
      * @param balance the amount to be withdrawn from the checking account
      */
-    public void withdraw(double balance){
+    public void withdrawChecking(double balance){
+        if((this.checking - balance) >= 0){
+            this.checking -= balance;
+        }else{
+            System.out.println("You cannot withdraw more money than is in your account!");
+        }
+    }
+
+    public void withdrawSavings(double balance){
         if((this.savings - balance) >= 0){
             this.savings -= balance;
+        }else{
+            System.out.println("You cannot withdraw more money than is in your account!");
+        }
+    }
+
+    public void withdrawMoneyMarket(double balance){
+        if((this.moneyMarket - balance) >= 0){
+            this.moneyMarket -= balance;
+        }else{
+            System.out.println("You cannot withdraw more money than is in your account!");
+        }
+    }
+
+    public void withdrawCertificateDeposit(double balance){
+        if((this.certificateDeposit - balance) >= 0){
+            this.certificateDeposit -= balance;
         }else{
             System.out.println("You cannot withdraw more money than is in your account!");
         }
