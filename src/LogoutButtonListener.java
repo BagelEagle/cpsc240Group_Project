@@ -6,21 +6,23 @@ import java.awt.event.ActionListener;
 
 /**
  * @author James Amador
- * Action Listener class specific to the 'make a Funds Transfer' button on the main menu.
+ * Action Listener class specific to the 'Logout' button on the main menu.
  */
-public class TransferButtonListener implements ActionListener {
+public class LogoutButtonListener implements ActionListener{
     private Window window;
     /**
-     * Constructor for the 'make a Funds Transfer' button on the menu screen.
+     * Constructor for the 'Logout' button on the menu screen.
      * @param jframeWindow - The window where all the windows are stored, in order to switch between windows.
      */
-    public TransferButtonListener(Window jframeWindow){
+    public LogoutButtonListener(Window jframeWindow){
         this.window = jframeWindow;
     }
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message.");
-        this.window.displayTransfer();
+        JOptionPane.showMessageDialog(null, "Signing out.");
+        this.window.clearUser();
+        this.window.hideMenu();
+        this.window.displayLogin();
     }
 }

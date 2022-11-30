@@ -25,7 +25,7 @@ public class Window {
     public Window(){
         initializeLoginWindow();
         initializeNewUserWindow();
-        //initializeMenuWindow();
+        initializeMenuWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -197,11 +197,15 @@ public class Window {
         this.menu = new JFrame("Main Menu");
         this.menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.menu.getContentPane().setLayout(new BoxLayout(this.menu.getContentPane(), BoxLayout.Y_AXIS));
-        //add buttons here
+        //add menu buttons here
         addCheckBalanceMenuButton();
         addDepositMenuButton();
+        addWithdrawalMenuButton();
+        addTransferMenuButton();
+        addLoanMenuButton();
+        addLogoutButton();
         //pack
-        //this.menu.pack();
+        this.menu.pack();
     }
 
     /**
@@ -218,7 +222,40 @@ public class Window {
      */
     public void addDepositMenuButton(){
         JButton button = new JButton("Make a Deposit");
-        button.addActionListener(new CheckBalanceButtonListener(this));
+        button.addActionListener(new DepositButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    /**
+     * Adds a 'make a withdrawal' menu button.
+     */
+    public void addWithdrawalMenuButton(){
+        JButton button = new JButton("Make a Withdrawal");
+        button.addActionListener(new WithdrawButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    /**
+     * Adds a 'make a Funds Transfer' menu button.
+     */
+    public void addTransferMenuButton(){
+        JButton button = new JButton("Make a Funds Transfer");
+        button.addActionListener(new TransferButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    /**
+     * Adds a 'request a loan' menu button.
+     */
+    public void addLoanMenuButton(){
+        JButton button = new JButton("Request a Loan");
+        button.addActionListener(new LoanRequestButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    public void addLogoutButton(){
+        JButton button = new JButton("Logout");
+        button.addActionListener(new LogoutButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 

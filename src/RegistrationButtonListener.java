@@ -36,5 +36,7 @@ public class RegistrationButtonListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent mouseClick){
         JOptionPane.showMessageDialog(null, "Placeholder message. Preform checks before allowing user to create their account.");
+        window.hideNewUser();
+        window.displayMenu();
     }
 }
