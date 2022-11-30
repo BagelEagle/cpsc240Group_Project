@@ -8,6 +8,7 @@ class LoginButtonListener implements ActionListener{
     private JTextField login;
     private JTextField password;
     public LoginButtonListener(Window jframeWindow, JTextField login, JTextField pass){
+        this.window = jframeWindow;
         this.login = login;
         this.password = pass;
     }
