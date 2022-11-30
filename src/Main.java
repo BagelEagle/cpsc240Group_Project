@@ -16,6 +16,7 @@ import java.util.Scanner;
 
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
+    private static User mainUser;
 
     public static void createNewUser () throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         String newUsername = null;
@@ -93,12 +94,7 @@ public class Main {
         }
     }
 
-    public static User loggedIn (User user) {
-        return user;
-    }
-
     public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, FileNotFoundException {
-        User mainUser = null;
         String filename;
         String fileUsername = null;
         String matchFile = null;
@@ -124,7 +120,6 @@ public class Main {
             for (String userName: users.keySet()) {
                 if (userName.equals(fileUsername)) {
                     mainUser = users.get(userName);
-                    loggedIn(mainUser);
                 }
             }
             String salt = mainUser.getSalt();
