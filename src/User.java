@@ -120,6 +120,9 @@ public class User {
         }
     }
 
+    public void balance() {
+
+    }
     /**
      * Retrieve's the amount of money in the user's checking account
      * @return amount of money in user's checking account
