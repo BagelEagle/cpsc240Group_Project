@@ -25,7 +25,7 @@ public class Window {
     public Window(){
         initializeLoginWindow();
         initializeNewUserWindow();
-        //initializeMenuWindow();
+        initializeMenuWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
