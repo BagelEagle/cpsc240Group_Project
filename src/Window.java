@@ -60,7 +60,7 @@ public class Window {
      */
     public void addLoginButton(JTextField log, JTextField pass) {
         JButton button = new JButton("Login");
-        button.addActionListener(new LoginButtonListener(log, pass));
+        button.addActionListener(new LoginButtonListener(this, log, pass));
         this.login.getContentPane().add(button);
     }
 
