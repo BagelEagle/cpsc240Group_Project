@@ -15,6 +15,7 @@ public class Window {
     public Window(){
         initializeLoginWindow();
         initializeNewUserWindow();
+        //initializeMenuWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -59,7 +60,7 @@ public class Window {
      */
     public void addLoginButton(JTextField log, JTextField pass) {
         JButton button = new JButton("Login");
-        button.addActionListener(new LoginButtonListener(log, pass));
+        button.addActionListener(new LoginButtonListener(this, log, pass));
         this.login.getContentPane().add(button);
     }
 
@@ -183,25 +184,53 @@ public class Window {
      * This is the main hub for new and existing users.
      */
     public void initializeMenuWindow(){
+        this.menu = new JFrame("Main Menu");
+        this.menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.menu.getContentPane().setLayout(new BoxLayout(this.menu.getContentPane(), BoxLayout.Y_AXIS));
+        //add buttons here
+        addCheckBalanceMenuButton();
+        //pack
+        //this.menu.pack();
+    }
 
-    }
     /**
-     * Adds a menu button, with the corresponding action listener for each button.
-     * Currently commented out until issues are fleshed out with getting the action listner
-     * to work as a parameter.
+     * Adds a check balance menu button. Currently, it is set up to display the balance in a pop up window.
      */
-    public void addMenuButton(String buttonName){
-    //    JButton button = new JButton("Register");
-    //    button.addActionListener(new listener(this));
-    //    button.setPreferredSize(new Dimension(120,40));
-    //    this.menu.getContentPane().add(button);
+    public void addCheckBalanceMenuButton(){
+        JButton button = new JButton("Check Account Balance");
+        button.addActionListener(new CheckBalanceButtonListener(this));
+        this.menu.getContentPane().add(button);
     }
+
+    /**
+     * Adds a 'make a deposit' menu button.
+     */
+    public void addDepositMenuButton(){
+        JButton button = new JButton("Make a Deposit");
+        button.addActionListener(new CheckBalanceButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
      * @return main menu window
      */
     public JFrame getMenu () {
         return menu;
+    }
+
+    /**
+     * Toggles the menu to be visible
+     */
+    public void displayMenu(){
+        this.menu.setVisible(true);
+    }
+
+    /**
+     * Toggles the menu to be hidden
+     */
+    public void hideMenu(){
+        this.menu.setVisible(false);
     }
 
     /**
@@ -213,11 +242,39 @@ public class Window {
     }
 
     /**
+     * Toggles the 'make a deposit' window to be visible
+     */
+    public void displayDeposit(){
+        this.deposit.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a deposit' window to be hidden
+     */
+    public void hideDeposit(){
+        this.deposit.setVisible(false);
+    }
+
+    /**
      * Getter method that returns the JFrame of the withdrawal window
      * @return make a withdrawal window
      */
     public JFrame getWithdraw () {
         return withdraw;
+    }
+
+    /**
+     * Toggles the 'make a withdrawal' window to be visible
+     */
+    public void displayWithdraw(){
+        this.withdraw.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a withdrawal' window to be hidden
+     */
+    public void hideWithdraw(){
+        this.withdraw.setVisible(false);
     }
 
     /**
@@ -229,11 +286,39 @@ public class Window {
     }
 
     /**
+     * Toggles the 'make a funds transfer' window to be visible
+     */
+    public void displayTransfer(){
+        this.transfer.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a funds transfer' window to be hidden
+     */
+    public void hideTransfer(){
+        this.transfer.setVisible(false);
+    }
+
+    /**
      * Getter method that returns the JFrame of the request a loan window
      * @return request a loan window
      */
     public JFrame getRequestLoan () {
         return requestLoan;
+    }
+
+    /**
+     * Toggles the 'request a loan' window to be visible
+     */
+    public void displayRequestLoan(){
+        this.requestLoan.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'request a loan' window to be hidden
+     */
+    public void hideRequestLoan(){
+        this.requestLoan.setVisible(false);
     }
 
     /**
