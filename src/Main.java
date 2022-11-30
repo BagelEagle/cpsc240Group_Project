@@ -66,17 +66,28 @@ public class Main {
     public static void deposit() {
         Scanner in = new Scanner(System.in);
         System.out.println("How much would you like to deposit?");
-        double depositAmount = in.nextInt();
+        double depositAmount = in.nextDouble();
         User user = new User();
         user.deposit(depositAmount);
 
     }
 
     public static void withdraw() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("How much would you like to withdraw?");
+        double withdrawAmount = in.nextDouble();
+
 
     }
 
     public static void transfer() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Which account would you like to transfer money from?");
+        String account1 = in.nextLine();
+
+        Scanner in2 = new Scanner(System.in);
+        System.out.println("Which account would you like to transfer money to?");
+        String account2 = in.nextLine();
 
     }
 
