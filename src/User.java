@@ -64,6 +64,14 @@ public class User {
         this.certificateDeposit = read.nextDouble();
     }
 
+    public String getPassword () {
+        return password;
+    }
+
+    public String getSalt () {
+        return salt;
+    }
+
     /**
      * Deposits a user specified amount into the user's checking account
      * @param balance the amount to be deposited into the checking account
