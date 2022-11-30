@@ -37,7 +37,7 @@ public class Window {
      */
     public void initializeLoginWindow(){
         //Creates the window
-        this.login = new JFrame("Login Page");
+        this.login = new JFrame("Login");
         //Exits the program upon closing the window
         this.login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Make a box layout
@@ -79,8 +79,8 @@ public class Window {
     public void addLoginField(){
         JTextField loginField = new JTextField(40);
         JTextField passwordField = new JPasswordField(40);
-        loginField.addActionListener(new TextListener());
-        passwordField.addActionListener(new TextListener());
+        loginField.addActionListener(new LoginTextListener());
+        passwordField.addActionListener(new LoginTextListener());
         addLabel(this.login, "Username:");
         this.login.getContentPane().add(loginField);
         addLabel(this.login, "Password:");
@@ -107,6 +107,43 @@ public class Window {
      */
     public void hideLogin(){
         login.setVisible(false);
+    }
+    //Template for initializing the registration window.
+    public void initializeNewUserWindow(){
+        //Creates the window with the name "Register New User"
+        this.newUser = new JFrame("Register New User");
+        //Exits the program upon closing the window
+        this.newUser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Make a box layout
+        this.login.getContentPane().setLayout(new BoxLayout(this.newUser.getContentPane(), BoxLayout.Y_AXIS));
+        //Adds the login fields and button
+        //addLoginField();
+        //addNewUserButton();
+        //pack
+        this.newUser.pack();
+    }
+
+    //Template for registration button
+    public void addRegisterButton(JTextField log, JTextField pass) {
+        JButton button = new JButton("Register");
+        button.addActionListener(new LoginButtonListener(log, pass));
+        this.login.getContentPane().add(button);
+    }
+    //Template for registration text fields
+    public void addRegistrationFields(){
+        JTextField loginField = new JTextField(40);
+        JTextField passwordField = new JPasswordField(40);
+        JTextField confirmPasswordField = new JPasswordField(40);
+        //Create a unique listener
+        loginField.addActionListener(new LoginTextListener());
+        passwordField.addActionListener(new LoginTextListener());
+        addLabel(this.login, "Username:");
+        this.login.getContentPane().add(loginField);
+        addLabel(this.login, "Password:");
+        this.login.getContentPane().add(passwordField);
+        //nonfunctional button. LoginButtonListener should be edited to compare
+        //what the user typed vs. the password stored in the corresponding username field's file.
+        addLoginButton(loginField, passwordField);
     }
 
     /**
