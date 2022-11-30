@@ -197,13 +197,14 @@ public class Window {
         this.menu = new JFrame("Main Menu");
         this.menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.menu.getContentPane().setLayout(new BoxLayout(this.menu.getContentPane(), BoxLayout.Y_AXIS));
-        //add buttons here
+        //add menu buttons here
         addCheckBalanceMenuButton();
         addDepositMenuButton();
         addWithdrawalMenuButton();
         addTransferMenuButton();
+        addLoanMenuButton();
         //pack
-        //this.menu.pack();
+        this.menu.pack();
     }
 
     /**
@@ -220,7 +221,7 @@ public class Window {
      */
     public void addDepositMenuButton(){
         JButton button = new JButton("Make a Deposit");
-        button.addActionListener(new CheckBalanceButtonListener(this));
+        button.addActionListener(new DepositButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -239,6 +240,15 @@ public class Window {
     public void addTransferMenuButton(){
         JButton button = new JButton("Make a Funds Transfer");
         button.addActionListener(new TransferButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    /**
+     * Adds a 'request a loan' menu button.
+     */
+    public void addLoanMenuButton(){
+        JButton button = new JButton("Request a Loan");
+        button.addActionListener(new LoanRequestButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
