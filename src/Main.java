@@ -24,9 +24,11 @@ public class Main {
         newUsername = in.nextLine();
         for (String id: users.keySet()) {
             if (id.equals(newUsername)) {
-                System.out.print("This username is taken. Please enter a different username: ");
-                Scanner newIn = new Scanner(System.in);
-                newUsername = newIn.nextLine();
+                while (id.equals(newUsername)) {
+                    System.out.print("This username is taken. Please enter a different username: ");
+                    Scanner newIn = new Scanner(System.in);
+                    newUsername = newIn.nextLine();
+                }
             }
         }
         File file = new File("./users/"+newUsername+".txt");
@@ -77,6 +79,7 @@ public class Main {
         File[] directoryListing = dir.listFiles();
         for (File aFile: directoryListing) {
             filename = aFile.getName();
+            filename = filename.substring(0, filename.length() - 4);
             FileReader reader = new FileReader(aFile);
             Scanner in = new Scanner(reader);
             while (in.hasNext()) {
@@ -90,7 +93,14 @@ public class Main {
     }
 
     public static void login () {
+        System.out.println("Username: ");
+        Scanner in = new Scanner(System.in);
+        String loginUsername = in.nextLine();
+        File dir = new File("./users");
+        File[] directoryListing = dir.listFiles();
+        for (File aFile: directoryListing) {
 
+        }
     }
 
 
@@ -231,7 +241,34 @@ public class Main {
             Scanner in = new Scanner(System.in);
             choice = in.nextInt();
             if (choice == 1) {
-
+                login();
+                int choice1 = 0;
+                while (choice1!=6) {
+                    System.out.println("Main Menu");
+                    System.out.println("Manage your bank accounts");
+                    System.out.println("1. See account balance");
+                    System.out.println("2. Make a deposit");
+                    System.out.println("3. Withdraw money");
+                    System.out.println("4. Transfer money");
+                    System.out.println("5. Request a loan");
+                    System.out.println("6. Log out");
+                    System.out.print(": ");
+                    Scanner in2 = new Scanner(System.in);
+                    choice1 = in.nextInt();
+                    if (choice1==1) {
+                        balance();
+                    } else if (choice1==2) {
+//                        deposit();
+                    } else if (choice1==3) {
+                        //withdraw();
+                    } else if (choice1==4) {
+                        transfer();
+                    } else if (choice1==5) {
+                        loan();
+                    } else if (choice1==6) {
+                        continue;
+                    }
+                }
             } else if (choice == 2) {
                 createNewUser();
                 int choice2 = 0;
