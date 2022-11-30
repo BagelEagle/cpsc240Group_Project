@@ -185,6 +185,7 @@ public class Window {
     public void initializeMenuWindow(){
 
     }
+
     /**
      * Adds a check balance menu button. Currently, it is set up to display the balance in a pop up window.
      */
@@ -193,12 +194,36 @@ public class Window {
         button.addActionListener(new CheckBalanceButtonListener(this));
         this.menu.getContentPane().add(button);
     }
+
+    /**
+     * Adds a 'make a deposit' menu button.
+     */
+    public void addDepositMenuButton(){
+        JButton button = new JButton("Make a Deposit");
+        button.addActionListener(new CheckBalanceButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
      * @return main menu window
      */
     public JFrame getMenu () {
         return menu;
+    }
+
+    /**
+     * Toggles the menu to be visible
+     */
+    public void displayMenu(){
+        this.menu.setVisible(true);
+    }
+
+    /**
+     * Toggles the menu to be hidden
+     */
+    public void hideMenu(){
+        this.menu.setVisible(false);
     }
 
     /**
@@ -210,11 +235,39 @@ public class Window {
     }
 
     /**
+     * Toggles the 'make a deposit' window to be visible
+     */
+    public void displayDeposit(){
+        this.deposit.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a deposit' window to be hidden
+     */
+    public void hideDeposit(){
+        this.deposit.setVisible(false);
+    }
+
+    /**
      * Getter method that returns the JFrame of the withdrawal window
      * @return make a withdrawal window
      */
     public JFrame getWithdraw () {
         return withdraw;
+    }
+
+    /**
+     * Toggles the 'make a withdrawal' window to be visible
+     */
+    public void displayWithdraw(){
+        this.withdraw.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a withdrawal' window to be hidden
+     */
+    public void hideWithdraw(){
+        this.withdraw.setVisible(false);
     }
 
     /**
@@ -226,11 +279,39 @@ public class Window {
     }
 
     /**
+     * Toggles the 'make a funds transfer' window to be visible
+     */
+    public void displayTransfer(){
+        this.transfer.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'make a funds transfer' window to be hidden
+     */
+    public void hideTransfer(){
+        this.transfer.setVisible(false);
+    }
+
+    /**
      * Getter method that returns the JFrame of the request a loan window
      * @return request a loan window
      */
     public JFrame getRequestLoan () {
         return requestLoan;
+    }
+
+    /**
+     * Toggles the 'request a loan' window to be visible
+     */
+    public void displayRequestLoan(){
+        this.requestLoan.setVisible(true);
+    }
+
+    /**
+     * Toggles the 'request a loan' window to be hidden
+     */
+    public void hideRequestLoan(){
+        this.requestLoan.setVisible(false);
     }
 
     /**
