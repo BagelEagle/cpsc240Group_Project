@@ -222,6 +222,12 @@ public class Window {
         this.menu.getContentPane().add(button);
     }
 
+    public void addWithdrawalMenuButton(){
+        JButton button = new JButton("Make a Withdrawal");
+        button.addActionListener(new insertListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
      * @return main menu window
