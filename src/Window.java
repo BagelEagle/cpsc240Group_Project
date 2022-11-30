@@ -3,6 +3,11 @@ package src;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+/**
+ * @author James Amador, April Groce, Kaylie Curran
+ * Window GUI that handles all the windows and user information.
+ */
+
 public class Window {
     private JFrame login;
     private JFrame newUser;
@@ -12,6 +17,11 @@ public class Window {
     private JFrame transfer;
     private JFrame requestLoan;
     private JFrame checkBalance;
+    private User user;
+
+    /**
+     * Constructor method that initializes every window, but only displays the login window
+     */
     public Window(){
         initializeLoginWindow();
         initializeNewUserWindow();
@@ -327,5 +337,30 @@ public class Window {
      */
     public JFrame getCheckBalance () {
         return checkBalance;
+    }
+
+    /**
+     * Getter method that gets the user attribute stored in the window GUI.
+     * @return this.user along with their bank information.
+     */
+    public User getUser(){
+        return this.user;
+    }
+
+    /**
+     * Setter method that sets the user attribute. Note that this method should only be called
+     * if the user has successfully logged in, or if a user has just created an account.
+     * @param loggedInUser - the user that created an account / logged in.
+     */
+    public void setUser(User loggedInUser){
+        this.user = loggedInUser;
+    }
+
+    /**
+     * Clears the information stored in the user attribute. This method should be used when
+     * the user logs out, so that no sensitive information remains for the next user that logs in.
+     */
+    public void clearUser(){
+        this.user = null;
     }
 }
