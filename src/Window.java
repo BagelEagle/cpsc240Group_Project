@@ -340,6 +340,19 @@ public class Window {
     }
 
     /**
+     * Toggles the 'request a loan' window to be visible
+     */
+    public void displayCheckBalance(){
+        this.checkBalance.setVisible(true);
+    }
+    /**
+     * Toggles the 'request a loan' window to be hidden
+     */
+    public void hideCheckBalance(){
+        this.checkBalance.setVisible(false);
+    }
+
+    /**
      * Getter method that gets the user attribute stored in the window GUI.
      * @return this.user along with their bank information.
      */
