@@ -176,9 +176,6 @@ public class Main {
             user.withdrawMoneyMarket(withdrawAmount);
         } else if (choice == 4) {
             user.withdrawCertificateDeposit(withdrawAmount);
-        } else {
-            System.out.println("You did not select a valid account");
-            System.out.println("");
         }
 
 
@@ -201,12 +198,36 @@ public class Main {
         System.out.println("4. Certificate Deposit");
         int account2 = in.nextInt();
 
-        Scanner in3 = new Scanner(System.in);
-        System.out.println("How much money would you like to transfer?");
-        double transferAmount = in.nextDouble();
+        while(account1 != account2) {
+            Scanner in3 = new Scanner(System.in);
+            System.out.println("How much money would you like to transfer?");
+            double transferAmount = in.nextDouble();
 
-        if (account1 == 1 && account2 == 2) {
-            user.transferCheckingSaving(transferAmount);
+            if (account1 == 1 && account2 == 2) {
+                user.transferCheckingSaving(transferAmount);
+            } else if (account1 == 1 && account2 == 3) {
+                user.transferCheckingMM(transferAmount);
+            } else if (account1 == 1 && account2 == 4) {
+                user.transferCheckingCD(transferAmount);
+            } else if (account1 == 2 && account2 == 1) {
+                user.transferSavingsChecking(transferAmount);
+            } else if (account1 == 2 && account2 == 3) {
+                user.transferSavingsMM(transferAmount);
+            } else if (account1 == 2 && account2 == 4) {
+                user.transferSavingsCD(transferAmount);
+            } else if (account1 == 3 && account2 == 1) {
+                user.transferMMChecking(transferAmount);
+            } else if (account1 == 3 && account2 == 2) {
+                user.transferMMSavings(transferAmount);
+            } else if (account1 == 3 && account2 == 4) {
+                user.transferMMCD(transferAmount);
+            } else if (account1 == 4 && account2 == 1) {
+                user.transferCDChecking(transferAmount);
+            } else if (account1 == 4 && account2 == 2) {
+                user.transferCDSavings(transferAmount);
+            } else if (account1 == 4 && account2 == 3) {
+                user.transferCDMM(transferAmount);
+            }
         }
     }
     public static void loan() {
@@ -256,13 +277,13 @@ public class Main {
                     Scanner in2 = new Scanner(System.in);
                     choice1 = in.nextInt();
                     if (choice1==1) {
-                        balance();
+                        //balance();
                     } else if (choice1==2) {
 //                        deposit();
                     } else if (choice1==3) {
                         //withdraw();
                     } else if (choice1==4) {
-                        transfer();
+                        //transfer();
                     } else if (choice1==5) {
                         loan();
                     } else if (choice1==6) {
