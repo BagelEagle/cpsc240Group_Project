@@ -142,6 +142,21 @@ public class User {
         System.out.println(this.moneyMarket);
         System.out.println(this.certificateDeposit);
     }
+
+    public void transferCheckingSaving(double balance) {
+        withdrawChecking(balance);
+        depositSavings(balance);
+    }
+
+    public void transferCheckingMM(double balance) {
+        withdrawChecking(balance);
+        depositMoneyMarket(balance);
+    }
+
+    public void transferCheckingCD(double balance) {
+        withdrawChecking(balance);
+        depositCertificateDeposit(balance);
+    }
     /**
      * Retrieve's the amount of money in the user's checking account
      * @return amount of money in user's checking account
