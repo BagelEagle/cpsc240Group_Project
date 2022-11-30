@@ -165,6 +165,51 @@ public class User {
         withdrawChecking(balance);
         depositCertificateDeposit(balance);
     }
+
+    public void transferSavingsChecking(double balance) {
+        withdrawSavings(balance);
+        depositChecking(balance);
+    }
+
+    public void transferSavingsMM(double balance) {
+        withdrawSavings(balance);
+        depositMoneyMarket(balance);
+    }
+
+    public void transferSavingsCD(double balance) {
+        withdrawSavings(balance);
+        depositCertificateDeposit(balance);
+    }
+
+    public void transferMMChecking(double balance) {
+        withdrawMoneyMarket(balance);
+        depositChecking(balance);
+    }
+
+    public void transferMMSavings(double balance) {
+        withdrawMoneyMarket(balance);
+        depositSavings(balance);
+    }
+
+    public void transferMMCD(double balance) {
+        withdrawMoneyMarket(balance);
+        depositCertificateDeposit(balance);
+    }
+
+    public void transferCDChecking(double balance) {
+        withdrawCertificateDeposit(balance);
+        depositChecking(balance);
+    }
+
+    public void transferCDSavings(double balance) {
+        withdrawCertificateDeposit(balance);
+        depositSavings(balance);
+    }
+
+    public void transferCDMM(double balance) {
+        withdrawCertificateDeposit(balance);
+        depositMoneyMarket(balance);
+    }
     /**
      * Retrieve's the amount of money in the user's checking account
      * @return amount of money in user's checking account
