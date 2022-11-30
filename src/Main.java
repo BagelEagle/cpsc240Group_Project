@@ -182,19 +182,6 @@ public class Main {
         System.out.println("3. Money Market");
         System.out.println("4. Certificate Deposit");
         int account1 = in.nextInt();
-        double balance1;
-        if (account1 == 1) {
-            ;balance1 = user.getChecking();
-        } else if (account1 == 2) {
-            balance1 = user.getSavings();
-        } else if (account1 == 3) {
-            balance1 = user.getMM();
-        } else if (account1 == 4) {
-            balance1 = user.getCD();
-        } else {
-                System.out.println("You did not select a valid account");
-                System.out.println("");
-        }
 
         Scanner in2 = new Scanner(System.in);
         System.out.println("Which account would you like to transfer money to?");
@@ -203,21 +190,15 @@ public class Main {
         System.out.println("3. Money Market");
         System.out.println("4. Certificate Deposit");
         int account2 = in.nextInt();
-        double balance2;
-        if (account2 == 1) {
-            ;balance2 = user.getChecking();
-        } else if (account2 == 2) {
-            balance2 = user.getSavings();
-        } else if (account2 == 3) {
-            balance2 = user.getMM();
-        } else if (account2 == 4) {
-            balance2 = user.getCD();
-        } else {
-            System.out.println("You did not select a valid account");
-            System.out.println("");
+
+        Scanner in3 = new Scanner(System.in);
+        System.out.println("How much money would you like to transfer?");
+        double transferAmount = in.nextDouble();
+
+        if (account1 == 1 && account2 == 2) {
+            user.transferCheckingSaving(transferAmount);
         }
     }
-
     public static void loan() {
         Scanner in = new Scanner(System.in);
         System.out.println("How much would you like to request a loan for?");
@@ -273,7 +254,7 @@ public class Main {
                     } else if (choice2==3) {
                         //withdraw();
                     } else if (choice2==4) {
-                        transfer();
+                        //transfer();
                     } else if (choice2==5) {
                         loan();
                     } else if (choice2==6) {
