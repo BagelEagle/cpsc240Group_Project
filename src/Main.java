@@ -3,8 +3,7 @@ package src;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -17,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
 
-    public static void createNewUser () throws InvalidKeySpecException, NoSuchAlgorithmException {
+    public static void createNewUser () throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         String newUsername = null;
         System.out.println("Create a new account");
         System.out.print("Please create a username: ");
@@ -30,6 +29,11 @@ public class Main {
                 newUsername = newIn.nextLine();
             }
         }
+        File file = new File("./users/"+newUsername+".txt");
+        file.createNewFile();
+
+        PrintWriter output = new PrintWriter("./users/"+newUsername+".txt");
+        output.println(newUsername);
         System.out.print("Please create a password: ");
         Scanner in2 = new Scanner(System.in);
         String password = in2.nextLine();
@@ -44,16 +48,45 @@ public class Main {
         Base64.Encoder enc = Base64.getEncoder();
         String theSalt = enc.encodeToString(salt);
         password = enc.encodeToString(hash);
+        output.println(password);
+        output.println(theSalt);
+
 
         System.out.println("First name:");
         Scanner in3 = new Scanner(System.in);
         String fname = in3.nextLine();
+        output.println(fname);
         System.out.println("Last name:");
         Scanner in4 = new Scanner(System.in);
         String lname = in4.nextLine();
+        output.println(lname);
         users.put(newUsername,new User(newUsername,password,theSalt,fname,lname,0.0,0.0));
         System.out.println("Your account has been successfully created.");
         System.out.println("");
+        output.println(0);
+        output.println(0);
+        output.println(0);
+        output.print(0);
+        output.close();
+    }
+
+    public static void addToHashFromFile () throws FileNotFoundException {
+        User user = null;
+        String filename;
+        File dir = new File("./users");
+        File[] directoryListing = dir.listFiles();
+        for (File aFile: directoryListing) {
+            filename = aFile.getName();
+            FileReader reader = new FileReader(aFile);
+            Scanner in = new Scanner(reader);
+            while (in.hasNext()) {
+                user = new User(in);
+                if (in.hasNext()) {
+                    in.nextLine();
+                }
+            }
+            users.put(filename, user);
+        }
     }
 
     public static void login () {
@@ -96,13 +129,11 @@ public class Main {
 
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-
-    public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //Line below initializes all the windows and displays the login window.
         //Window win = new Window();
+        addToHashFromFile();
+        System.out.println(users);
         System.out.println("Welcome to your mobile bank account!");
         int choice = 0;
         while (choice!=3) {
