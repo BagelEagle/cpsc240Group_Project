@@ -119,7 +119,7 @@ public class Window {
         //Exits the program upon closing the window
         this.newUser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Make a box layout
-        this.login.getContentPane().setLayout(new BoxLayout(this.newUser.getContentPane(), BoxLayout.Y_AXIS));
+        this.newUser.getContentPane().setLayout(new BoxLayout(this.newUser.getContentPane(), BoxLayout.Y_AXIS));
         //Adds the registration fields and button
         addRegistrationFields();
         //pack
