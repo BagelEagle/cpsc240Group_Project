@@ -203,6 +203,7 @@ public class Window {
         addWithdrawalMenuButton();
         addTransferMenuButton();
         addLoanMenuButton();
+        addLogoutButton();
         //pack
         this.menu.pack();
     }
@@ -249,6 +250,12 @@ public class Window {
     public void addLoanMenuButton(){
         JButton button = new JButton("Request a Loan");
         button.addActionListener(new LoanRequestButtonListener(this));
+        this.menu.getContentPane().add(button);
+    }
+
+    public void addLogoutButton(){
+        JButton button = new JButton("Logout");
+        button.addActionListener(new LogoutButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
