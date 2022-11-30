@@ -44,21 +44,29 @@ public class Window {
         this.login.getContentPane().setLayout(new BoxLayout(login.getContentPane(), BoxLayout.Y_AXIS));
         //Adds the login fields and button
         addLoginField();
+        addNewUserButton();
         //pack
         this.login.pack();
     }
 
     /**
      * Creates a login button for the login screen
-     * @param text Name of the button
      * @param log Login text field
      * @param pass Password text field. Note that while the Type is listed as a JTextField,
      *             it is actually a JPasswordField.
      */
-    public void addLoginButton(String text, JTextField log, JTextField pass) {
-        JButton button = new JButton(text);
+    public void addLoginButton(JTextField log, JTextField pass) {
+        JButton button = new JButton("Login");
         button.addActionListener(new LoginButtonListener(log, pass));
         this.login.getContentPane().add(button);
+    }
+
+    public void addNewUserButton(){
+        JButton button = new JButton("Register");
+        button.addActionListener(new NewUserButtonListener());
+        //button.setPreferredSize(new Dimension(120,40));
+        this.login.getContentPane().add(button);
+
     }
 
     /**
@@ -76,7 +84,7 @@ public class Window {
         this.login.getContentPane().add(passwordField);
         //nonfunctional button. LoginButtonListener should be edited to compare
         //what the user typed vs. the password stored in the corresponding username field's file.
-        addLoginButton("Placeholder text", loginField, passwordField);
+        addLoginButton(loginField, passwordField);
     }
 
     /**
