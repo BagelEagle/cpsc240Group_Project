@@ -99,17 +99,55 @@ public class Main {
     }
 
     public static void deposit(User user) {
+        System.out.println("Which account would you like to deposit in to?");
+        System.out.println("1. Checking");
+        System.out.println("2. Savings");
+        System.out.println("3. Money Market");
+        System.out.println("4. Certificate Deposit");
         Scanner in = new Scanner(System.in);
+        int choice = in.nextInt();
+
         System.out.println("How much would you like to deposit?");
         double depositAmount = in.nextDouble();
-        user.deposit(depositAmount);
 
+        if (choice == 1) {
+            user.withdrawChecking(depositAmount);
+        } else if (choice == 2) {
+            user.withdrawSavings(depositAmount);
+        } else if (choice == 3) {
+            user.withdrawMoneyMarket(depositAmount);
+        } else if (choice == 4) {
+            user.withdrawCertificateDeposit(depositAmount);
+        } else {
+            System.out.println("You did not select a valid account");
+            System.out.println("");
+        }
     }
 
-    public static void withdraw() {
+    public static void withdraw(User user) {
+        System.out.println("Which account would you like to withdraw from?");
+        System.out.println("1. Checking");
+        System.out.println("2. Savings");
+        System.out.println("3. Money Market");
+        System.out.println("4. Certificate Deposit");
         Scanner in = new Scanner(System.in);
+        int choice = in.nextInt();
+
         System.out.println("How much would you like to withdraw?");
         double withdrawAmount = in.nextDouble();
+
+        if (choice == 1) {
+            user.withdrawChecking(withdrawAmount);
+        } else if (choice == 2) {
+            user.withdrawSavings(withdrawAmount);
+        } else if (choice == 3) {
+            user.withdrawMoneyMarket(withdrawAmount);
+        } else if (choice == 4) {
+            user.withdrawCertificateDeposit(withdrawAmount);
+        } else {
+            System.out.println("You did not select a valid account");
+            System.out.println("");
+        }
 
 
     }
@@ -126,7 +164,20 @@ public class Main {
     }
 
     public static void loan() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("How much would you like to request a loan for?");
+        double loanAmount = in.nextDouble();
 
+        Scanner in2 = new Scanner(System.in);
+        System.out.println("What is the reason you are requesting a loan?");
+        String loanReason = in2.nextLine();
+
+        Scanner in3 = new Scanner(System.in);
+        System.out.println("What is your current salary?");
+        double salary = in3.nextDouble();
+
+        System.out.println("Thank you for your request. It will be reviewed and you will be notified when it has been approved");
+        System.out.println("");
     }
 
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
@@ -165,7 +216,7 @@ public class Main {
                     } else if (choice2==2) {
 //                        deposit();
                     } else if (choice2==3) {
-                        withdraw();
+                        //withdraw();
                     } else if (choice2==4) {
                         transfer();
                     } else if (choice2==5) {
