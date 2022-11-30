@@ -120,8 +120,27 @@ public class User {
         }
     }
 
-    public void balance() {
+    public void balanceChecking() {
+        System.out.println(this.checking);
+    }
 
+    public void balanceSavings() {
+        System.out.println(this.savings);
+    }
+
+    public void balanceMoneyMarket() {
+        System.out.println(this.moneyMarket);
+    }
+
+    public void balanceCertificateDeposit() {
+        System.out.println(this.certificateDeposit);
+    }
+
+    public void balance() {
+        System.out.println(this.checking);
+        System.out.println(this.savings);
+        System.out.println(this.moneyMarket);
+        System.out.println(this.certificateDeposit);
     }
     /**
      * Retrieve's the amount of money in the user's checking account
