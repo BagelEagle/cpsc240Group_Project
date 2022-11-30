@@ -69,12 +69,21 @@ public class User {
         return salt;
     }
 
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
     /**
      * Deposits a user specified amount into the user's checking account
      * @param balance the amount to be deposited into the checking account
      */
-    public void depositChecking(double balance){
+    public double depositChecking(double balance){
+
         this.checking += balance;
+        return this.checking;
     }
 
     public void depositSavings(double balance){

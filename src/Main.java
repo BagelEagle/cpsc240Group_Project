@@ -168,7 +168,12 @@ public class Main {
         }
     }
 
-    public static void deposit() {
+    public static void deposit() throws IOException {
+        System.out.println(mainUser.getUsername());
+        File file = new File("./users/" + mainUser.getUsername() + ".txt");
+        file.createNewFile();
+
+        PrintWriter output = new PrintWriter("./users/" + mainUser.getUsername() + ".txt");
         System.out.println("Which account would you like to deposit in to?");
         System.out.println("1. Checking");
         System.out.println("2. Savings");
@@ -181,7 +186,18 @@ public class Main {
         double depositAmount = in.nextDouble();
 
         if (choice == 1) {
+            double balance = mainUser.depositChecking(depositAmount);
+            System.out.println(balance);
 
+            output.println(mainUser.getUsername());
+            output.println(mainUser.getPassword());
+            output.println(mainUser.getSalt());
+            output.println(mainUser.getFname());
+            output.println(mainUser.getLname());
+            output.println(balance);
+            output.println(mainUser.getSavings());
+            output.println(mainUser.getMM());
+            output.println(mainUser.getCD());
         } else if (choice == 2) {
             mainUser.withdrawSavings(depositAmount);
         } else if (choice == 3) {
