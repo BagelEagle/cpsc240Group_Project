@@ -36,7 +36,7 @@ public class Main {
 
         //password hashing - "the salt" is what is used to transform the password so each salt would need to be stored with password, so added a new variable to the user object to include this
         byte[] salt = new byte[16];
-        SecureRandom random = null;
+        SecureRandom random = new SecureRandom();
         random.nextBytes(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
         SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
@@ -52,6 +52,8 @@ public class Main {
         Scanner in4 = new Scanner(System.in);
         String lname = in4.nextLine();
         users.put(newUsername,new User(newUsername,password,theSalt,fname,lname,0.0,0.0));
+        System.out.println("Your account has been successfully created.");
+        System.out.println("");
     }
 
     public static void login () {
@@ -63,11 +65,10 @@ public class Main {
 
     }
 
-    public static void deposit() {
+    public static void deposit(User user) {
         Scanner in = new Scanner(System.in);
         System.out.println("How much would you like to deposit?");
         double depositAmount = in.nextDouble();
-        User user = new User();
         user.deposit(depositAmount);
 
     }
