@@ -1,6 +1,7 @@
 package src;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class Window {
     private JFrame login;
@@ -70,7 +71,6 @@ public class Window {
         button.addActionListener(new NewUserButtonListener(this));
         //button.setPreferredSize(new Dimension(120,40));
         this.login.getContentPane().add(button);
-
     }
 
     /**
@@ -95,7 +95,8 @@ public class Window {
      * Getter method that returns the login JFrame window
      * @return login window
      */
-    public JFrame getLogin(){ return login; }
+    public JFrame getLogin(){
+        return login; }
     /**
      * Displays the login window
      */
@@ -161,7 +162,8 @@ public class Window {
      * @return new user window
      */
     public JFrame getNewUser(){
-        return newUser; }
+        return newUser;
+    }
 
     /**
      * Displays the new user window
@@ -175,6 +177,24 @@ public class Window {
      */
     public void hideNewUser(){
         newUser.setVisible(false);
+    }
+    /**
+     * Initializes the main menu of the program.
+     * This is the main hub for new and existing users.
+     */
+    public void initializeMenuWindow(){
+
+    }
+    /**
+     * Adds a menu button, with the corresponding action listener for each button.
+     * Currently commented out until issues are fleshed out with getting the action listner
+     * to work as a parameter.
+     */
+    public void addMenuButton(String buttonName){
+    //    JButton button = new JButton("Register");
+    //    button.addActionListener(new listener(this));
+    //    button.setPreferredSize(new Dimension(120,40));
+    //    this.menu.getContentPane().add(button);
     }
     /**
      * Getter method that returns the main menu JFrame for the user that logged in
