@@ -15,6 +15,7 @@ public class Window {
     public Window(){
         initializeLoginWindow();
         initializeNewUserWindow();
+        //initializeMenuWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -183,7 +184,13 @@ public class Window {
      * This is the main hub for new and existing users.
      */
     public void initializeMenuWindow(){
-
+        this.menu = new JFrame("Main Menu");
+        this.menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.menu.getContentPane().setLayout(new BoxLayout(this.menu.getContentPane(), BoxLayout.Y_AXIS));
+        //add buttons here
+        addCheckBalanceMenuButton();
+        //pack
+        //this.menu.pack();
     }
 
     /**
