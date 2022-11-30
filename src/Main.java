@@ -94,8 +94,30 @@ public class Main {
     }
 
 
-    public static void balance() {
+    public static void balance(User user) {
+        System.out.println("Which account balance would you like to see?");
+        System.out.println("1. Checking");
+        System.out.println("2. Savings");
+        System.out.println("3. Money Market");
+        System.out.println("4. Certificate Deposit");
+        System.out.println("5. All");
+        Scanner in = new Scanner(System.in);
+        int choice = in.nextInt();
 
+        if (choice == 1) {
+            user.balanceChecking();
+        } else if (choice == 2) {
+            user.balanceSavings();
+        } else if (choice == 3) {
+            user.balanceMoneyMarket();
+        } else if (choice == 4) {
+            user.balanceCertificateDeposit();
+        } else if (choice == 5) {
+            user.balance();
+        } else {
+            System.out.println("You did not select a valid account");
+            System.out.println("");
+        }
     }
 
     public static void deposit(User user) {
@@ -152,15 +174,48 @@ public class Main {
 
     }
 
-    public static void transfer() {
+    public static void transfer(User user) {
         Scanner in = new Scanner(System.in);
         System.out.println("Which account would you like to transfer money from?");
-        String account1 = in.nextLine();
+        System.out.println("1. Checking");
+        System.out.println("2. Savings");
+        System.out.println("3. Money Market");
+        System.out.println("4. Certificate Deposit");
+        int account1 = in.nextInt();
+        double balance1;
+        if (account1 == 1) {
+            ;balance1 = user.getChecking();
+        } else if (account1 == 2) {
+            balance1 = user.getSavings();
+        } else if (account1 == 3) {
+            balance1 = user.getMM();
+        } else if (account1 == 4) {
+            balance1 = user.getCD();
+        } else {
+                System.out.println("You did not select a valid account");
+                System.out.println("");
+        }
 
         Scanner in2 = new Scanner(System.in);
         System.out.println("Which account would you like to transfer money to?");
-        String account2 = in.nextLine();
-
+        System.out.println("1. Checking");
+        System.out.println("2. Savings");
+        System.out.println("3. Money Market");
+        System.out.println("4. Certificate Deposit");
+        int account2 = in.nextInt();
+        double balance2;
+        if (account2 == 1) {
+            ;balance2 = user.getChecking();
+        } else if (account2 == 2) {
+            balance2 = user.getSavings();
+        } else if (account2 == 3) {
+            balance2 = user.getMM();
+        } else if (account2 == 4) {
+            balance2 = user.getCD();
+        } else {
+            System.out.println("You did not select a valid account");
+            System.out.println("");
+        }
     }
 
     public static void loan() {
@@ -212,7 +267,7 @@ public class Main {
                     Scanner in2 = new Scanner(System.in);
                     choice2 = in.nextInt();
                     if (choice2==1) {
-                        balance();
+                        //balance();
                     } else if (choice2==2) {
 //                        deposit();
                     } else if (choice2==3) {
