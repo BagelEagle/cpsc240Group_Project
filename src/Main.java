@@ -41,11 +41,12 @@ public class Main {
         System.out.print("Please create a password: ");
         Scanner in2 = new Scanner(System.in);
         String password = in2.nextLine();
-
+        //next 3 lines creates salt
         //password hashing - "the salt" is what is used to transform the password so each salt would need to be stored with password, so added a new variable to the user object to include this
         byte[] salt = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(salt);
+
         System.out.println(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
         SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");

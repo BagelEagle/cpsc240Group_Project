@@ -199,6 +199,7 @@ public class Window {
         this.menu.getContentPane().setLayout(new BoxLayout(this.menu.getContentPane(), BoxLayout.Y_AXIS));
         //add buttons here
         addCheckBalanceMenuButton();
+        addDepositMenuButton();
         //pack
         //this.menu.pack();
     }
