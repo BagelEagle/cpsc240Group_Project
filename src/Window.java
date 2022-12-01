@@ -29,6 +29,7 @@ public class Window {
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
         // "Window" class.
+        JOptionPane.showMessageDialog(null, "Welcome to your mobile bank account!");
         displayLogin();
     }
     /**

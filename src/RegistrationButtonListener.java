@@ -35,7 +35,6 @@ public class RegistrationButtonListener implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Welcome!");
         window.hideNewUser();
         window.displayMenu();
     }

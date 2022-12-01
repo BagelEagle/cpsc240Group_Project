@@ -25,7 +25,7 @@ public class LoginNewUserButtonListener implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message. This message is located in the method where login window is hidden and the new user window is displayed");
+        JOptionPane.showMessageDialog(null, "Placeholder message.");
         this.window.hideLogin();
         this.window.displayNewUser();
     }

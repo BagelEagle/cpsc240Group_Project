@@ -19,7 +19,6 @@ class LoginButtonListener implements ActionListener{
         //text boxes.
         //JOptionPane.showMessageDialog(null, "You typed: " + this.login.getText() + " " + this.password.getText());
         //Currently does not check if login was successful. Just goes straight to main menu
-        JOptionPane.showMessageDialog(null, "Welcome!");
         login.setText("");
         password.setText("");
         window.hideLogin();
