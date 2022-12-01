@@ -435,7 +435,7 @@ public class Window {
 
     public void addCheckingAccountButton(){
         JButton button = new JButton("Checking Account Balance");
-        button.addActionListener(new MainMenuCheckBalanceButtonListener(this));
+        button.addActionListener(new BalanceCheckingButtonListener(this));
         this.checkBalance.getContentPane().add(button);
     }
     public void addBalanceExitButton(){
