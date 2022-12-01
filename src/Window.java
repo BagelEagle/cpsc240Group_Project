@@ -27,6 +27,7 @@ public class Window {
         initializeLoginWindow();
         initializeNewUserWindow();
         initializeMenuWindow();
+        //initializeCheckBalanceWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -431,6 +432,10 @@ public class Window {
         JButton button = new JButton("Checking Account Balance");
         button.addActionListener(new MainMenuCheckBalanceButtonListener(this));
         this.checkBalance.getContentPane().add(button);
+        //buttons here
+        //Checking, Savings, MoneyMarket, CertificateDeposit, ALL
+        //pack
+        this.checkBalance.pack();
     }
 
     /**
