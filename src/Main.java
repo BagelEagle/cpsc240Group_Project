@@ -1,18 +1,29 @@
 package src;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.swing.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     private static HashMap<String, User> users = new HashMap<>();
-    public static User mainUser;
+    private static User mainUser;
 
+    /**
+     * This method creates a new user and reads the information back out into a file. This method also hashes the password.
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     * @throws IOException
+     */
     public static void createNewUser () throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         String newUsername = null;
         System.out.println("Create a new account");
@@ -36,26 +47,21 @@ public class Main {
         System.out.print("Please create a password: ");
         Scanner in2 = new Scanner(System.in);
         String password = in2.nextLine();
+        //next 3 lines creates salt
+        //password hashing - "the salt" is what is used to transform the password so each salt would need to be stored with password, so added a new variable to the user object to include this
+        byte[] salt = new byte[16];
+        SecureRandom random = new SecureRandom();
+        random.nextBytes(salt);
 
-        MessageDigest alg = MessageDigest.getInstance("MD5");
-        alg.reset();
-        alg.update(password.getBytes());
-        byte[] digest = alg.digest();
-        StringBuffer hashedpasswd = new StringBuffer();
-        String hx;
-        for (int i=0;i<digest.length;i++) {
-            hx = Integer.toHexString(0xFF & digest[i]);
-            if(hx.length() == 1){
-                hx = "0" + hx;
-            }
-            hashedpasswd.append(hx);
-        }
-
-        String theSalt = digest.toString();
-        output.println(hashedpasswd);
-        output.println(theSalt);
-
-
+        System.out.println(salt);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] hash = f.generateSecret(spec).getEncoded();
+        Base64.Encoder enc = Base64.getEncoder();
+        String theSalt = enc.encodeToString(salt);
+        password = enc.encodeToString(hash);
+        output.println(password);
+        output.println(salt);
 
         System.out.println("First name:");
         Scanner in3 = new Scanner(System.in);
@@ -76,6 +82,10 @@ public class Main {
         output.close();
     }
 
+    /**
+     * This method reads in the files and creates a hashmap with the username as the key and the User object as the value
+     * @throws FileNotFoundException
+     */
     public static void addToHashFromFile () throws FileNotFoundException {
         User user = null;
         String filename;
@@ -96,7 +106,14 @@ public class Main {
         }
     }
 
-    public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, IOException {
+    /**
+     * This method prompts the user to enter their username and password. It then searches through the files to determine if it was a valid username and password
+     * @return true if the login was successful and false if it was not
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws FileNotFoundException
+     */
+    public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, FileNotFoundException {
         String filename;
         String fileUsername = null;
         String matchFile = null;
@@ -124,23 +141,18 @@ public class Main {
                     mainUser = users.get(userName);
                 }
             }
-
-            MessageDigest alg = MessageDigest.getInstance("MD5");
-            alg.reset();
-            alg.update(pass.getBytes());
-            byte[] digest = alg.digest();
-            StringBuffer hashedpasswd = new StringBuffer();
-            String hx;
-            for (int i=0;i<digest.length;i++) {
-                hx = Integer.toHexString(0xFF & digest[i]);
-                if(hx.length() == 1){
-                    hx = "0" + hx;
-                }
-                hashedpasswd.append(hx);
-            }
-
-            String password = Files.readAllLines(Paths.get("./users/" + loginUsername + ".txt")).get(1);
-            if (hashedpasswd.toString().equals(password)) {
+            String salt = mainUser.getSalt();
+            byte[] theSalt = salt.getBytes(StandardCharsets.UTF_8);
+            System.out.println(theSalt);
+            KeySpec spec = new PBEKeySpec(pass.toCharArray(), theSalt, 65536, 128);
+            SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            byte[] hash = f.generateSecret(spec).getEncoded();
+            Base64.Encoder enc = Base64.getEncoder();
+            String newPass = enc.encodeToString(hash);
+            System.out.println(newPass);
+            String userPass = mainUser.getPassword();
+            System.out.println(userPass);
+            if (pass.equals(userPass)) {
                 return true;
             } else {
                 return false;
@@ -223,7 +235,7 @@ public class Main {
             mainUser.withdrawCertificateDeposit(withdrawAmount);
         }
 
-        File fnew=new File("./users/" + mainUser.getUsername() + "molly.txt");
+        File fnew=new File("./users/" + mainUser.getUsername() + ".txt");
         FileWriter f = new FileWriter(fnew, false);
         f.write(mainUser.getUsername() + "\n");
         f.write(mainUser.getPassword() + "\n");
@@ -287,7 +299,7 @@ public class Main {
             System.out.println("Unable to transfer, please try again");
     }
 
-        File fnew=new File("./users/" + mainUser.getUsername() + "molly.txt");
+        File fnew=new File("./users/" + mainUser.getUsername() + ".txt");
         FileWriter f = new FileWriter(fnew, false);
         f.write(mainUser.getUsername() + "\n");
         f.write(mainUser.getPassword() + "\n");
@@ -317,9 +329,16 @@ public class Main {
         System.out.println("");
     }
 
+    /**
+     * This is the main method.
+     * @param args
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     * @throws IOException
+     */
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //Line below initializes all the windows and displays the login window.
-        //Window win = new Window();
+        Window win = new Window();
         addToHashFromFile();
         System.out.println(users);
         System.out.println("Welcome to your mobile bank account!");
