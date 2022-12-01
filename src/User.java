@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class User {
     private String username;
     private String password;
+    private String salt;
     private String fname;
     private String lname;
-    private String salt;
     private double checking;
     private double savings;
     private double moneyMarket;

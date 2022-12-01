@@ -5,6 +5,9 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -49,7 +52,24 @@ public class Main {
         String password = in2.nextLine();
         //next 3 lines creates salt
         //password hashing - "the salt" is what is used to transform the password so each salt would need to be stored with password, so added a new variable to the user object to include this
-        byte[] salt = new byte[16];
+        MessageDigest alg = MessageDigest.getInstance("MD5");
+        alg.reset();
+        alg.update(password.getBytes());
+        byte[] digest = alg.digest();
+        StringBuffer hashedpasswd = new StringBuffer();
+        String hx;
+        for (int i=0;i<digest.length;i++) {
+            hx = Integer.toHexString(0xFF & digest[i]);
+            if(hx.length() == 1){
+                hx = "0" + hx;
+            }
+            hashedpasswd.append(hx);
+        }
+
+        String theSalt = digest.toString();
+        output.println(hashedpasswd);
+        output.println(theSalt);
+        /*byte[] salt = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(salt);
 
@@ -59,9 +79,9 @@ public class Main {
         byte[] hash = f.generateSecret(spec).getEncoded();
         Base64.Encoder enc = Base64.getEncoder();
         String theSalt = enc.encodeToString(salt);
-        password = enc.encodeToString(hash);
+        password = enc.encodeToString(hash);*/
         output.println(password);
-        output.println(salt);
+        output.println(theSalt);
 
         System.out.println("First name:");
         Scanner in3 = new Scanner(System.in);
@@ -113,7 +133,7 @@ public class Main {
      * @throws InvalidKeySpecException
      * @throws FileNotFoundException
      */
-    public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, FileNotFoundException {
+    public static boolean login () throws NoSuchAlgorithmException, InvalidKeySpecException, IOException {
         String filename;
         String fileUsername = null;
         String matchFile = null;
@@ -137,28 +157,30 @@ public class Main {
             Scanner in2 = new Scanner (System.in);
             String pass = in2.nextLine();
             for (String userName: users.keySet()) {
-                if (userName.equals(fileUsername)) {
-                    mainUser = users.get(userName);
-                }
+                mainUser = users.get(userName);
             }
-            String salt = mainUser.getSalt();
-            byte[] theSalt = salt.getBytes(StandardCharsets.UTF_8);
-            System.out.println(theSalt);
-            KeySpec spec = new PBEKeySpec(pass.toCharArray(), theSalt, 65536, 128);
-            SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            byte[] hash = f.generateSecret(spec).getEncoded();
-            Base64.Encoder enc = Base64.getEncoder();
-            String newPass = enc.encodeToString(hash);
-            System.out.println(newPass);
-            String userPass = mainUser.getPassword();
-            System.out.println(userPass);
-            if (pass.equals(userPass)) {
-                return true;
-            } else {
-                return false;
+        MessageDigest alg = MessageDigest.getInstance("MD5");
+        alg.reset();
+        alg.update(pass.getBytes());
+        byte[] digest = alg.digest();
+        StringBuffer hashedpasswd = new StringBuffer();
+        String hx;
+        for (int i=0;i<digest.length;i++) {
+            hx = Integer.toHexString(0xFF & digest[i]);
+            if(hx.length() == 1){
+                hx = "0" + hx;
             }
+            hashedpasswd.append(hx);
+        }
+
+        String password = Files.readAllLines(Paths.get("./users/" + loginUsername + ".txt")).get(1);
+        if (hashedpasswd.toString().equals(password)) {
+            return true;
+        } else {
+            return false;
         }
     }
+}
 
     /**
      * Displays the balances for the user's accounts
@@ -357,7 +379,7 @@ public class Main {
      */
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //Line below initializes all the windows and displays the login window.
-        Window win = new Window();
+        //Window win = new Window();
         addToHashFromFile();
         System.out.println(users);
         System.out.println("Welcome to your mobile bank account!");
