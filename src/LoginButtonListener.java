@@ -3,7 +3,7 @@ package src;
 import javax.swing.*;
 import java.awt.event.*;
 
-class LoginButtonListener implements ActionListener{
+public class LoginButtonListener implements ActionListener{
     private Window window;
     private JTextField login;
     private JTextField password;
@@ -14,7 +14,7 @@ class LoginButtonListener implements ActionListener{
     }
     //Here is where the main check should occur to see if the users credentials matches what is saved in the file
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent mouseClick){
         //Code in the line below is for testing purposes. It proves you can retrieve the text from
         //text boxes.
         //JOptionPane.showMessageDialog(null, "You typed: " + this.login.getText() + " " + this.password.getText());

@@ -8,6 +8,7 @@ import javax.swing.*;
  */
 
 public class Window {
+    private JFrame welcome;
     private JFrame login;
     private JFrame newUser;
     private JFrame menu;
@@ -29,7 +30,6 @@ public class Window {
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
         // "Window" class.
-        JOptionPane.showMessageDialog(null, "Welcome to your mobile bank account!");
         displayLogin();
     }
     /**
@@ -41,6 +41,37 @@ public class Window {
     public static void addLabel(JFrame frame, String text){
         JLabel label = new JLabel(text);
         frame.getContentPane().add(label);
+    }
+    public void initializeWelcomeWindow(){
+        this.welcome = new JFrame("Welcome!");
+        this.welcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.welcome.getContentPane().setLayout(new BoxLayout(this.welcome.getContentPane(), BoxLayout.Y_AXIS));
+        addLabel(this.welcome, "Welcome to your mobile banking account!");
+        addWelcomeLoginButton();
+        addWelcomeCreateAccountButton();
+        this.welcome.pack();
+    }
+    public void addWelcomeLoginButton(){
+        JButton button = new JButton("Login");
+        button.addActionListener(new WelcomeLoginButtonListener(this));
+        this.welcome.getContentPane().add(button);
+    }
+
+    /**
+     * Creates a button for new users to register an account
+     */
+    public void addWelcomeCreateAccountButton(){
+        JButton button = new JButton("Create Account");
+        button.addActionListener(new WelcomeCreateAccountButtonListener(this));
+        //button.setPreferredSize(new Dimension(120,40));
+        this.welcome.getContentPane().add(button);
+    }
+    public void displayWelcome(){
+        this.welcome.setVisible(true);
+    }
+
+    public void hideWelcome(){
+        this.welcome.setVisible(false);
     }
 
     /**
@@ -57,7 +88,6 @@ public class Window {
         this.login.getContentPane().setLayout(new BoxLayout(login.getContentPane(), BoxLayout.Y_AXIS));
         //Adds the login fields and button
         addLoginField();
-        addNewUserButton();
         //pack
         this.login.pack();
     }
@@ -75,20 +105,11 @@ public class Window {
     }
 
     /**
-     * Creates a button for new users to register an account
-     */
-    public void addNewUserButton(){
-        JButton button = new JButton("Register");
-        button.addActionListener(new LoginNewUserButtonListener(this));
-        //button.setPreferredSize(new Dimension(120,40));
-        this.login.getContentPane().add(button);
-    }
-
-    /**
      * Creates a login field for users to input username and password.
      * Also creates a login button. Button is currently nonfunctional.
      */
     public void addLoginField(){
+        addLabel(this.login, "Log in to existing account");
         JTextField loginField = new JTextField(40);
         JTextField passwordField = new JPasswordField(40);
         loginField.addActionListener(new LoginTextListener());
