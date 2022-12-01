@@ -426,10 +426,11 @@ public class Window {
         this.checkBalance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.checkBalance.getContentPane().setLayout(new BoxLayout(this.checkBalance.getContentPane(), BoxLayout.Y_AXIS));
         addCheckingAccountButton();
+        addBalanceSavingsButton();
+        addBalanceMoneyMarketButton();
+        addBalanceCDButton();
+        addBalanceViewAllBalancesButton();
         addBalanceExitButton();
-        //buttons here
-        //Savings, MoneyMarket, CertificateDeposit, ALL
-        //pack
         this.checkBalance.pack();
     }
 
@@ -441,6 +442,28 @@ public class Window {
     public void addBalanceExitButton(){
         JButton button = new JButton("Exit");
         button.addActionListener(new BalanceExitButtonListener(this));
+        this.checkBalance.getContentPane().add(button);
+    }
+    public void addBalanceSavingsButton(){
+        JButton button = new JButton("Savings Account Balance");
+        button.addActionListener(new BalanceSavingsButtonListener(this));
+        this.checkBalance.getContentPane().add(button);
+    }
+
+    public void addBalanceMoneyMarketButton(){
+        JButton button = new JButton("Money Market Balance");
+        button.addActionListener(new BalanceMoneyMarketButtonListener(this));
+        this.checkBalance.getContentPane().add(button);
+    }
+
+    public void addBalanceCDButton(){
+        JButton button = new JButton("Certificate Deposit Balance");
+        button.addActionListener(new BalanceCDButtonListener(this));
+    }
+
+    public void addBalanceViewAllBalancesButton(){
+        JButton button = new JButton("View All Balances Balance");
+        button.addActionListener(new BalanceCheckAllButtonListener(this));
         this.checkBalance.getContentPane().add(button);
     }
 
