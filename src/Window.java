@@ -394,10 +394,13 @@ public class Window {
         this.checkBalance = new JFrame("Check Balance");
         this.checkBalance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.checkBalance.getContentPane().setLayout(new BoxLayout(this.checkBalance.getContentPane(), BoxLayout.Y_AXIS));
-        addLabel(this.checkBalance, "Which account balance would you like to see?");
-        //add buttons below
 
+    }
 
+    public void addCheckingAccountButton(){
+        JButton button = new JButton("Checking Account Balance");
+        button.addActionListener(new MainMenuCheckBalanceButtonListener(this));
+        this.checkBalance.getContentPane().add(button);
     }
 
     /**
