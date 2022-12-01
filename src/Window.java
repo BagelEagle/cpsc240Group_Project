@@ -368,6 +368,7 @@ public class Window {
     public void hideRequestLoan(){
         this.requestLoan.setVisible(false);
     }
+    public void initializeCheckBalanceWindow(){}
 
     /**
      * Getter method that returns the JFrame of the check balance window
