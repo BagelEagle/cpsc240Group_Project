@@ -20,21 +20,22 @@ public class MainMenuCheckBalanceButtonListener implements ActionListener {
      * @param jframeWindow - The window where all the windows are stored, in order to switch between windows.
      */
     public MainMenuCheckBalanceButtonListener(Window jframeWindow) {
-        JFrame window = new JFrame("Check Balance");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setLayout(new BoxLayout(window.getContentPane(), BoxLayout.Y_AXIS));
-
-
+        window = jframeWindow;
+        //window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //window.getContentPane().setLayout(new BoxLayout(window.getContentPane(), BoxLayout.Y_AXIS));
     }
-
     @Override
     public void actionPerformed(ActionEvent mouseClick) {
-        JFrame window = new JFrame("Check Balance");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setLayout(new BoxLayout(window.getContentPane(), BoxLayout.Y_AXIS));
+        //I commented out the code here since it broke the original functionality of the Button Listener.
+        //I kept the code here just in case.
+        //JFrame window = new JFrame("Check Balance");
+        //window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //window.getContentPane().setLayout(new BoxLayout(window.getContentPane(), BoxLayout.Y_AXIS));
+        //JLabel label = new JLabel();
+        //label.setText("Which account would you like to check the balance of?");
+        //window.add(label);
 
-        JLabel label = new JLabel();
-        label.setText("Which account would you like to check the balance of?");
-        window.add(label);
+        window.hideMenu();
+        window.displayCheckBalance();
     }
 }

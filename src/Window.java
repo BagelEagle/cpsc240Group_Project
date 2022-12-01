@@ -27,7 +27,7 @@ public class Window {
         initializeLoginWindow();
         initializeNewUserWindow();
         initializeMenuWindow();
-        //initializeCheckBalanceWindow();
+        initializeCheckBalanceWindow();
         //initialize each window here as a method.
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
@@ -425,17 +425,23 @@ public class Window {
         this.checkBalance = new JFrame("Check Balance");
         this.checkBalance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.checkBalance.getContentPane().setLayout(new BoxLayout(this.checkBalance.getContentPane(), BoxLayout.Y_AXIS));
-
+        addCheckingAccountButton();
+        addBalanceExitButton();
+        //buttons here
+        //Savings, MoneyMarket, CertificateDeposit, ALL
+        //pack
+        this.checkBalance.pack();
     }
 
     public void addCheckingAccountButton(){
         JButton button = new JButton("Checking Account Balance");
         button.addActionListener(new MainMenuCheckBalanceButtonListener(this));
         this.checkBalance.getContentPane().add(button);
-        //buttons here
-        //Checking, Savings, MoneyMarket, CertificateDeposit, ALL
-        //pack
-        this.checkBalance.pack();
+    }
+    public void addBalanceExitButton(){
+        JButton button = new JButton("Exit");
+        button.addActionListener(new BalanceExitButtonListener(this));
+        this.checkBalance.getContentPane().add(button);
     }
 
     /**
