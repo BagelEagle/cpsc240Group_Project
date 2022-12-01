@@ -23,6 +23,7 @@ public class Window {
      * Constructor method that initializes every window, but only displays the login window
      */
     public Window(){
+        initializeWelcomeWindow();
         initializeLoginWindow();
         initializeNewUserWindow();
         initializeMenuWindow();
@@ -30,7 +31,7 @@ public class Window {
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
         // "Window" class.
-        displayLogin();
+        displayWelcome();
     }
     /**
      * Creates a text label. This can be put anywhere on the screen, such as
@@ -103,6 +104,11 @@ public class Window {
         button.addActionListener(new LoginButtonListener(this, log, pass));
         this.login.getContentPane().add(button);
     }
+    public void addExitLoginButton(JTextField log, JTextField pass){
+        JButton button = new JButton("Exit");
+        button.addActionListener(new LoginExitButtonListener(this, log, pass));
+        this.login.getContentPane().add(button);
+    }
 
     /**
      * Creates a login field for users to input username and password.
@@ -119,6 +125,7 @@ public class Window {
         addLabel(this.login, "Password:");
         this.login.getContentPane().add(passwordField);
         addLoginButton(loginField, passwordField);
+        addExitLoginButton(loginField, passwordField);
     }
 
     /**
@@ -164,9 +171,19 @@ public class Window {
      * @param pass The user's selected password. Button will listen for this text box.
      * @param confPass The user's password retyped. Button will listen for this text box.
      */
-    public void addRegisterButton(JTextField log, JTextField pass, JTextField confPass) {
+    public void addRegisterButton(JTextField log, JTextField pass, JTextField confPass,
+                                  JTextField fname, JTextField lname, JTextField checkingAmt,
+                                  JTextField savingsAmt) {
         JButton button = new JButton("Register");
-        button.addActionListener(new RegistrationButtonListener(this, log, pass, confPass));
+        button.addActionListener(new RegistrationButtonListener(this, log, pass, confPass, fname, lname, checkingAmt, savingsAmt));
+        this.newUser.getContentPane().add(button);
+    }
+    public void addExitRegistrationButton(JTextField log, JTextField pass, JTextField confPass,
+                                          JTextField fname, JTextField lname, JTextField checkingAmt,
+                                          JTextField savingsAmt){
+        JButton button = new JButton("Exit");
+        button.addActionListener(new RegistrationExitButtonListener(this, log, pass, confPass,
+                                                                     fname, lname, checkingAmt, savingsAmt));
         this.newUser.getContentPane().add(button);
     }
 
@@ -178,13 +195,26 @@ public class Window {
         JTextField loginField = new JTextField(40);
         JTextField passwordField = new JPasswordField(40);
         JTextField confirmPasswordField = new JPasswordField(40);
+        JTextField firstName = new JTextField(40);
+        JTextField lastName = new JTextField(40);
+        JTextField amtInChecking = new JTextField(40);
+        JTextField amtInSavings = new JTextField(40);
         addLabel(this.newUser, "Username:");
         this.newUser.getContentPane().add(loginField);
         addLabel(this.newUser, "Password:");
         this.newUser.getContentPane().add(passwordField);
         addLabel(this.newUser, "Confirm password:");
         this.newUser.getContentPane().add(confirmPasswordField);
-        addRegisterButton(loginField, passwordField, confirmPasswordField);
+        addLabel(this.newUser, "First name:");
+        this.newUser.getContentPane().add(firstName);
+        addLabel(this.newUser, "Last name:");
+        this.newUser.getContentPane().add(lastName);
+        addLabel(this.newUser, "Initial amount in Checking Account:");
+        this.newUser.getContentPane().add(amtInChecking);
+        addLabel(this.newUser, "Initial amount in Savings Account:");
+        this.newUser.getContentPane().add(amtInSavings);
+        addRegisterButton(loginField, passwordField, confirmPasswordField, firstName, lastName, amtInChecking, amtInSavings);
+        addExitRegistrationButton(loginField, passwordField, confirmPasswordField, firstName, lastName, amtInChecking, amtInSavings);
     }
 
     /**
