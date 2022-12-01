@@ -63,7 +63,7 @@ public class RegistrationButtonListener implements ActionListener{
 //          this.checkingAmt.setText("");
 //          this.savingsAmt.setText("");
 //          Switch to main menu with user information
-//          window.hideNewUser();
-//          window.displayMenu();
+        window.hideNewUser();
+        window.displayMenu();
     }
 }
