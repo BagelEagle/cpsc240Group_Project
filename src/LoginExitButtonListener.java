@@ -25,6 +25,9 @@ public class LoginExitButtonListener implements ActionListener{
      * @param mouseClick the event to be processed
      */
     public void actionPerformed(ActionEvent mouseClick){
+        String message = "Suppose the user no longer wished to login. If they typed something in the text fields, ideally " +
+                "those fields should be made blank. That is what this actionPerformed method does. If you try to login again, " +
+                "you'll see that what you typed isn't kept. That's a good security practice!";
         login.setText("");
         password.setText("");
         window.hideLogin();

@@ -29,7 +29,7 @@ public class Window {
         initializeMenuWindow();
         initializeCheckBalanceWindow();
         //initialize each window here as a method.
-        //Display login will always be last, since it
+        //Display welcome window will always be last, since it
         //is the first window that is displayed upon creation of
         // "Window" class.
         displayWelcome();

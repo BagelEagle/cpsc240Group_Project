@@ -18,12 +18,15 @@ public class LoginButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent e){
         //Code in the line below is for testing purposes. It proves you can retrieve the text from
         //text boxes.
+        String message = "This button can read in what the user types in both text fields. It should verify that the password matches" +
+                " the password found in the corresponding user file. For now, this button just tells you what you typed for testing purposes." +
+                " It also switches to the main menu";
+        JOptionPane.showMessageDialog(null, message);
         JOptionPane.showMessageDialog(null, "You typed: " + this.login.getText() + " " + this.password.getText());
         //Currently does not check if login was successful. Just goes straight to main menu
         //System.out.println(mainUser.getUsername());
         //login.setText(mainUser.getUsername());
         //password.setText(mainUser.getPassword());
-        JOptionPane.showMessageDialog(null, "Welcome!");
         login.setText("");
         password.setText("");
         window.hideLogin();
