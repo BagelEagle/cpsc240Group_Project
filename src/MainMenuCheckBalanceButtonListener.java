@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
 
-import static src.Main.mainUser;
-
 /**
  * @author James Amador
  * Action Listener class specific to the check balance button on the main menu.
