@@ -218,11 +218,23 @@ public class Main {
             mainUser.withdrawCertificateDeposit(withdrawAmount);
         }
 
+        File fnew=new File("./users/" + mainUser.getUsername() + ".txt");
+        FileWriter f = new FileWriter(fnew, false);
+        f.write(mainUser.getUsername() + "\n");
+        f.write(mainUser.getPassword() + "\n");
+        f.write(mainUser.getSalt() + "\n");
+        f.write(mainUser.getFname() + "\n");
+        f.write(mainUser.getLname() + "\n");
+        f.write(String.valueOf(mainUser.getChecking()) + "\n");
+        f.write(String.valueOf(mainUser.getSavings()) + "\n");
+        f.write(String.valueOf(mainUser.getMM()) + "\n");
+        f.write(String.valueOf(mainUser.getCD()) + "\n");
+        f.close();
 
 
     }
 
-    public static void transfer() {
+    public static void transfer() throws IOException {
         Scanner in = new Scanner(System.in);
         System.out.println("Which account would you like to transfer money from?");
         System.out.println("1. Checking");
@@ -239,37 +251,49 @@ public class Main {
         System.out.println("4. Certificate Deposit");
         int account2 = in.nextInt();
 
-        while(account1 != account2) {
-            Scanner in3 = new Scanner(System.in);
-            System.out.println("How much money would you like to transfer?");
-            double transferAmount = in.nextDouble();
+        System.out.println("How much money would you like to transfer?");
+        Scanner in3 = new Scanner(System.in);
+        double transferAmount = in.nextDouble();
+        if (account1 == 1 && account2 == 2) {
+            mainUser.transferCheckingSaving(transferAmount);
+        } else if (account1 == 1 && account2 == 3) {
+            mainUser.transferCheckingMM(transferAmount);
+        } else if (account1 == 1 && account2 == 4) {
+            mainUser.transferCheckingCD(transferAmount);
+        } else if (account1 == 2 && account2 == 1) {
+            mainUser.transferSavingsChecking(transferAmount);
+        } else if (account1 == 2 && account2 == 3) {
+            mainUser.transferSavingsMM(transferAmount);
+        } else if (account1 == 2 && account2 == 4) {
+            mainUser.transferSavingsCD(transferAmount);
+        } else if (account1 == 3 && account2 == 1) {
+            mainUser.transferMMChecking(transferAmount);
+        } else if (account1 == 3 && account2 == 2) {
+            mainUser.transferMMSavings(transferAmount);
+        } else if (account1 == 3 && account2 == 4) {
+            mainUser.transferMMCD(transferAmount);
+        } else if (account1 == 4 && account2 == 1) {
+            mainUser.transferCDChecking(transferAmount);
+        } else if (account1 == 4 && account2 == 2) {
+            mainUser.transferCDSavings(transferAmount);
+        } else if (account1 == 4 && account2 == 3) {
+            mainUser.transferCDMM(transferAmount);
+        } else {
+            System.out.println("Unable to transfer, please try again");
+    }
 
-            if (account1 == 1 && account2 == 2) {
-                mainUser.transferCheckingSaving(transferAmount);
-            } else if (account1 == 1 && account2 == 3) {
-                mainUser.transferCheckingMM(transferAmount);
-            } else if (account1 == 1 && account2 == 4) {
-                mainUser.transferCheckingCD(transferAmount);
-            } else if (account1 == 2 && account2 == 1) {
-                mainUser.transferSavingsChecking(transferAmount);
-            } else if (account1 == 2 && account2 == 3) {
-                mainUser.transferSavingsMM(transferAmount);
-            } else if (account1 == 2 && account2 == 4) {
-                mainUser.transferSavingsCD(transferAmount);
-            } else if (account1 == 3 && account2 == 1) {
-                mainUser.transferMMChecking(transferAmount);
-            } else if (account1 == 3 && account2 == 2) {
-                mainUser.transferMMSavings(transferAmount);
-            } else if (account1 == 3 && account2 == 4) {
-                mainUser.transferMMCD(transferAmount);
-            } else if (account1 == 4 && account2 == 1) {
-                mainUser.transferCDChecking(transferAmount);
-            } else if (account1 == 4 && account2 == 2) {
-                mainUser.transferCDSavings(transferAmount);
-            } else if (account1 == 4 && account2 == 3) {
-                mainUser.transferCDMM(transferAmount);
-            }
-        }
+        File fnew=new File("./users/" + mainUser.getUsername() + ".txt");
+        FileWriter f = new FileWriter(fnew, false);
+        f.write(mainUser.getUsername() + "\n");
+        f.write(mainUser.getPassword() + "\n");
+        f.write(mainUser.getSalt() + "\n");
+        f.write(mainUser.getFname() + "\n");
+        f.write(mainUser.getLname() + "\n");
+        f.write(String.valueOf(mainUser.getChecking()) + "\n");
+        f.write(String.valueOf(mainUser.getSavings()) + "\n");
+        f.write(String.valueOf(mainUser.getMM()) + "\n");
+        f.write(String.valueOf(mainUser.getCD()) + "\n");
+        f.close();
     }
     public static void loan() {
         Scanner in = new Scanner(System.in);
@@ -290,7 +314,7 @@ public class Main {
 
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //Line below initializes all the windows and displays the login window.
-        Window win = new Window();
+        /*Window win = new Window();*/
         addToHashFromFile();
         System.out.println(users);
         System.out.println("Welcome to your mobile bank account!");
