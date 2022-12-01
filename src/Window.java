@@ -175,7 +175,7 @@ public class Window {
                                           JTextField fname, JTextField lname, JTextField checkingAmt,
                                           JTextField savingsAmt){
         JButton button = new JButton("Exit");
-        button.addActionListener(new ExitCreateAccountButtonListener(this, log, pass, confPass,
+        button.addActionListener(new RegistrationExitButtonListener(this, log, pass, confPass,
                                                                      fname, lname, checkingAmt, savingsAmt));
         this.newUser.getContentPane().add(button);
     }

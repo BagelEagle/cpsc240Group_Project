@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
  * Action Listener class that backs out of create account window and erases any information
  * typed onto the fields
  */
-public class ExitCreateAccountButtonListener implements ActionListener {
+public class RegistrationExitButtonListener implements ActionListener {
     private Window window;
     private JTextField username;
     private JTextField password;
@@ -29,9 +29,9 @@ public class ExitCreateAccountButtonListener implements ActionListener {
      * @param checkingAmt - The text box where the user types in the initial amount in checking
      * @param savingsAmt - The text box where the user types in the initial amount in savings
      */
-    public ExitCreateAccountButtonListener(Window jframeWindow, JTextField uname, JTextField pass, JTextField confPass,
-                                           JTextField fname, JTextField lname, JTextField checkingAmt,
-                                           JTextField savingsAmt){
+    public RegistrationExitButtonListener(Window jframeWindow, JTextField uname, JTextField pass, JTextField confPass,
+                                          JTextField fname, JTextField lname, JTextField checkingAmt,
+                                          JTextField savingsAmt){
         this.window = jframeWindow;
         this.username = uname;
         this.password = pass;
