@@ -314,7 +314,7 @@ public class Main {
 
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //Line below initializes all the windows and displays the login window.
-        /*Window win = new Window();*/
+        Window win = new Window();
         addToHashFromFile();
         System.out.println(users);
         System.out.println("Welcome to your mobile bank account!");
