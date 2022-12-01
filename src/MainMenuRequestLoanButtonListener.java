@@ -20,7 +20,9 @@ public class MainMenuRequestLoanButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message.");
-        this.window.displayRequestLoan();
+        String message = "This button would take the user to a window where the user has the option to request a loan. \n" +
+                "That window has not been initialized yet, so ths button just displays this message.";
+        JOptionPane.showMessageDialog(null, message);
+        //this.window.displayRequestLoan();
     }
 }

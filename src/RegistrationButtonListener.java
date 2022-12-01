@@ -51,6 +51,14 @@ public class RegistrationButtonListener implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent mouseClick){
+        String message = "Here, this action listner looks at what the user typed in each field. A new user should be created\n" +
+                " in these specific scenarios only:\n" +
+                "1) The username is not yet taken \n" +
+                "2) The user retyped the password and both passwords match \n" +
+                "3) The user has populated both the checking and savings amount with 5.00 or greater \n" +
+                "4) All fields have been populated\n" +
+                "Upon success, the user will be taken to the main menu. For now, this button just goes straight to the menu.";
+        JOptionPane.showMessageDialog(null, message);
 //        if user was successful:
 //          popupwindow says success!
 //          information is saved first

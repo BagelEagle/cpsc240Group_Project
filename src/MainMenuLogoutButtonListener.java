@@ -20,6 +20,9 @@ public class MainMenuLogoutButtonListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
+        String message = "This button clears the user information from Window.java by setting the User instance variable to null. \n" +
+                "It then hides the menu window, and directs the user to the welcome window.";
+        JOptionPane.showMessageDialog(null, message);
         JOptionPane.showMessageDialog(null, "Signing out.");
         this.window.clearUser();
         this.window.hideMenu();

@@ -20,7 +20,9 @@ public class MainMenuTransferButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message.");
-        this.window.displayTransfer();
+        String message = "This button would take the user to a window where the user has the option to make a funds transfer. \n" +
+                "That window has not been initialized yet, so ths button just displays this message.";
+        JOptionPane.showMessageDialog(null, message);
+        //this.window.displayTransfer();
     }
 }

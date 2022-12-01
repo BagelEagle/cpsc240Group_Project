@@ -26,7 +26,7 @@ public class WelcomeCreateAccountButtonListener implements ActionListener{
      */
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message.");
+        JOptionPane.showMessageDialog(null, "This button takes the user to the create account screen.");
         this.window.hideWelcome();
         this.window.displayNewUser();
     }

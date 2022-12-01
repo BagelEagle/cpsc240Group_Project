@@ -32,6 +32,8 @@ public class MainMenuCheckBalanceButtonListener implements ActionListener {
         //JLabel label = new JLabel();
         //label.setText("Which account would you like to check the balance of?");
         //window.add(label);
+        String message = "This button would take the user to a window where the user can check their balances for their accounts.";
+        JOptionPane.showMessageDialog(null, message);
 
         window.hideMenu();
         window.displayCheckBalance();

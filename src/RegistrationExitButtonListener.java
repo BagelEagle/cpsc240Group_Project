@@ -42,6 +42,10 @@ public class RegistrationExitButtonListener implements ActionListener {
         this.savingsAmt = savingsAmt;
     }
     public void actionPerformed(ActionEvent mouseClick){
+        String message = "Suppose the user no longer wishes to make an account. This button allows the user to return to \n" +
+                "the welcome screen. Before doing so, the action listener will clear the fields for each Text box. \n" +
+                "This way, the next user who wishes to create an account may not see sensitive details of the previous user.\n";
+        JOptionPane.showMessageDialog(null, message);
         this.username.setText("");
         this.password.setText("");
         this.confirmedPassword.setText("");
