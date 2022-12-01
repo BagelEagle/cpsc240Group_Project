@@ -160,6 +160,9 @@ public class Main {
         }
     }
 
+    /**
+     * Displays the balances for the user's accounts
+     */
     public static void balance() {
         System.out.println("Which account balance would you like to see?");
         System.out.println("1. Checking");
@@ -185,6 +188,10 @@ public class Main {
         }
     }
 
+    /**
+     * Allows the user to deposit money into any of their accounts
+     * @throws IOException when the user's file can not be accessed
+     */
     public static void deposit() throws IOException {
         System.out.println("Which account would you like to deposit in to?");
         System.out.println("1. Checking");
@@ -213,6 +220,10 @@ public class Main {
 
     }
 
+    /**
+     * Allows the user to withdraw money from any of their accounts
+     * @throws IOException when the user's file can not be accessed
+     */
     public static void withdraw() throws IOException {
         System.out.println("Which account would you like to withdraw from?");
         System.out.println("1. Checking");
@@ -251,6 +262,10 @@ public class Main {
 
     }
 
+    /**
+     * Allows the user to transfer money between any of their accounts
+     * @throws IOException when the user's file can not be accessed
+     */
     public static void transfer() throws IOException {
         Scanner in = new Scanner(System.in);
         System.out.println("Which account would you like to transfer money from?");
@@ -312,6 +327,10 @@ public class Main {
         f.write(String.valueOf(mainUser.getCD()) + "\n");
         f.close();
     }
+
+    /**
+     * Allows the user to request a loan
+     */
     public static void loan() {
         Scanner in = new Scanner(System.in);
         System.out.println("How much would you like to request a loan for?");
