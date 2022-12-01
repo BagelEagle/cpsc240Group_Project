@@ -26,6 +26,6 @@ public class MainMenuLogoutButtonListener implements ActionListener{
         JOptionPane.showMessageDialog(null, "Signing out.");
         this.window.clearUser();
         this.window.hideMenu();
-        this.window.displayLogin();
+        this.window.displayWelcome();
     }
 }
