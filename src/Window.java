@@ -23,6 +23,7 @@ public class Window {
      * Constructor method that initializes every window, but only displays the login window
      */
     public Window(){
+        initializeWelcomeWindow();
         initializeLoginWindow();
         initializeNewUserWindow();
         initializeMenuWindow();
@@ -30,7 +31,7 @@ public class Window {
         //Display login will always be last, since it
         //is the first window that is displayed upon creation of
         // "Window" class.
-        displayLogin();
+        displayWelcome();
     }
     /**
      * Creates a text label. This can be put anywhere on the screen, such as
@@ -103,6 +104,11 @@ public class Window {
         button.addActionListener(new LoginButtonListener(this, log, pass));
         this.login.getContentPane().add(button);
     }
+    public void addExitLoginButton(JTextField log, JTextField pass){
+        JButton button = new JButton("Exit");
+        button.addActionListener(new LoginExitButtonListener(this, log, pass));
+        this.login.getContentPane().add(button);
+    }
 
     /**
      * Creates a login field for users to input username and password.
@@ -119,6 +125,7 @@ public class Window {
         addLabel(this.login, "Password:");
         this.login.getContentPane().add(passwordField);
         addLoginButton(loginField, passwordField);
+        addExitLoginButton(loginField, passwordField);
     }
 
     /**
