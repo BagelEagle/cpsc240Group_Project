@@ -7,14 +7,14 @@ import java.awt.event.*;
  * @author James Amador
  * Action Listener class specific to the new user button on the login window.
  */
-public class NewUserButtonListener implements ActionListener{
+public class LoginNewUserButtonListener implements ActionListener{
     private Window window;
 
     /**
      * Constructor for the register new user button on the login screen.
      * @param jframeWindow - The window where all the windows are stored, in order to switch between windows.
      */
-    public NewUserButtonListener(Window jframeWindow){
+    public LoginNewUserButtonListener(Window jframeWindow){
         window = jframeWindow;
     }
 

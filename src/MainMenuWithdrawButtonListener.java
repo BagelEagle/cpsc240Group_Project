@@ -6,20 +6,21 @@ import java.awt.event.ActionListener;
 
 /**
  * @author James Amador
- * Action Listener class specific to the check balance button on the main menu.
+ * ActionListener class specific to the 'make a deposit' button on the main menu.
  */
-public class CheckBalanceButtonListener implements ActionListener {
+public class MainMenuWithdrawButtonListener implements ActionListener{
     private Window window;
     /**
-     * Constructor for the check balance button on the menu screen.
+     * Constructor for the 'make a withdrawal' button on the menu screen.
      * @param jframeWindow - The window where all the windows are stored, in order to switch between windows.
      */
-    public CheckBalanceButtonListener(Window jframeWindow){
+    public MainMenuWithdrawButtonListener(Window jframeWindow){
         this.window = jframeWindow;
     }
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
-        JOptionPane.showMessageDialog(null, "Placeholder message. Display balance here.");
+        JOptionPane.showMessageDialog(null, "Placeholder message.");
+        this.window.displayWithdraw();
     }
 }

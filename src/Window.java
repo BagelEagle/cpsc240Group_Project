@@ -78,7 +78,7 @@ public class Window {
      */
     public void addNewUserButton(){
         JButton button = new JButton("Register");
-        button.addActionListener(new NewUserButtonListener(this));
+        button.addActionListener(new LoginNewUserButtonListener(this));
         //button.setPreferredSize(new Dimension(120,40));
         this.login.getContentPane().add(button);
     }
@@ -210,7 +210,7 @@ public class Window {
      */
     public void addCheckBalanceMenuButton(){
         JButton button = new JButton("Check Account Balance");
-        button.addActionListener(new CheckBalanceButtonListener(this));
+        button.addActionListener(new MainMenuCheckBalanceButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -219,7 +219,7 @@ public class Window {
      */
     public void addDepositMenuButton(){
         JButton button = new JButton("Make a Deposit");
-        button.addActionListener(new DepositButtonListener(this));
+        button.addActionListener(new MainMenuDepositButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -228,7 +228,7 @@ public class Window {
      */
     public void addWithdrawalMenuButton(){
         JButton button = new JButton("Make a Withdrawal");
-        button.addActionListener(new WithdrawButtonListener(this));
+        button.addActionListener(new MainMenuWithdrawButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -237,7 +237,7 @@ public class Window {
      */
     public void addTransferMenuButton(){
         JButton button = new JButton("Make a Funds Transfer");
-        button.addActionListener(new TransferButtonListener(this));
+        button.addActionListener(new MainMenuTransferButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -246,7 +246,7 @@ public class Window {
      */
     public void addLoanMenuButton(){
         JButton button = new JButton("Request a Loan");
-        button.addActionListener(new LoanRequestButtonListener(this));
+        button.addActionListener(new MainMenuRequestLoanButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -255,7 +255,7 @@ public class Window {
      */
     public void addLogoutButton(){
         JButton button = new JButton("Logout");
-        button.addActionListener(new LogoutButtonListener(this));
+        button.addActionListener(new MainMenuLogoutButtonListener(this));
         this.menu.getContentPane().add(button);
     }
 
@@ -368,7 +368,15 @@ public class Window {
     public void hideRequestLoan(){
         this.requestLoan.setVisible(false);
     }
-    public void initializeCheckBalanceWindow(){}
+    public void initializeCheckBalanceWindow(){
+        this.checkBalance = new JFrame("Check Balance");
+        this.checkBalance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.checkBalance.getContentPane().setLayout(new BoxLayout(this.checkBalance.getContentPane(), BoxLayout.Y_AXIS));
+        addLabel(this.checkBalance, "Which account balance would you like to see?");
+        //add buttons below
+
+
+    }
 
     /**
      * Getter method that returns the JFrame of the check balance window

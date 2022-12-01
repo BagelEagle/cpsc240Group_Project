@@ -6,21 +6,21 @@ import java.awt.event.ActionListener;
 
 /**
  * @author James Amador
- * Action Listener class specific to the 'make a deposit' button on the main menu.
+ * Action Listener class specific to the 'make a Funds Transfer' button on the main menu.
  */
-public class DepositButtonListener implements ActionListener{
+public class MainMenuTransferButtonListener implements ActionListener {
     private Window window;
     /**
-     * Constructor for the 'make a deposit' button on the menu screen.
+     * Constructor for the 'make a Funds Transfer' button on the menu screen.
      * @param jframeWindow - The window where all the windows are stored, in order to switch between windows.
      */
-    public DepositButtonListener(Window jframeWindow){
+    public MainMenuTransferButtonListener(Window jframeWindow){
         this.window = jframeWindow;
     }
 
     @Override
     public void actionPerformed(ActionEvent mouseClick){
         JOptionPane.showMessageDialog(null, "Placeholder message.");
-        this.window.displayDeposit();
+        this.window.displayTransfer();
     }
 }
