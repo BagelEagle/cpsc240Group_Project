@@ -3,6 +3,8 @@ package src;
 import javax.swing.*;
 import java.awt.event.*;
 
+import static src.Main.mainUser;
+
 public class LoginButtonListener implements ActionListener{
     private Window window;
     private JTextField login;
@@ -17,10 +19,11 @@ public class LoginButtonListener implements ActionListener{
     public void actionPerformed(ActionEvent mouseClick){
         //Code in the line below is for testing purposes. It proves you can retrieve the text from
         //text boxes.
-        //JOptionPane.showMessageDialog(null, "You typed: " + this.login.getText() + " " + this.password.getText());
+        JOptionPane.showMessageDialog(null, "You typed: " + this.login.getText() + " " + this.password.getText());
         //Currently does not check if login was successful. Just goes straight to main menu
-        login.setText("");
-        password.setText("");
+        System.out.println(mainUser.getUsername());
+        login.setText(mainUser.getUsername());
+        password.setText(mainUser.getPassword());
         window.hideLogin();
         window.displayMenu();
     }
