@@ -1,7 +1,6 @@
 package src;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
 /**
  * @author James Amador, April Groce, Kaylie Curran
@@ -97,8 +96,6 @@ public class Window {
         this.login.getContentPane().add(loginField);
         addLabel(this.login, "Password:");
         this.login.getContentPane().add(passwordField);
-        //nonfunctional button. LoginButtonListener should be edited to compare
-        //what the user typed vs. the password stored in the corresponding username field's file.
         addLoginButton(loginField, passwordField);
     }
 
@@ -253,6 +250,9 @@ public class Window {
         this.menu.getContentPane().add(button);
     }
 
+    /**
+     * Ends the session for the user that is logged in, and clears their information.
+     */
     public void addLogoutButton(){
         JButton button = new JButton("Logout");
         button.addActionListener(new LogoutButtonListener(this));
